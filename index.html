@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JPI Capital Bank — Maquininhas e Conta Digital</title>
+    <link rel="icon" href="assets/jpi/favicon.svg" type="image/x-icon">
+    <meta name="description"
+        content="Escolha sua maquininha JPI, veja taxas claras, simule suas vendas e abra sua conta digital gratuita." />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Font Layout Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+
+    <style>
+        /* =========================================================
+                JPI Capital Bank – Design Tokens & CSS Organizado
+            ========================================================= */
+
+        /* ---------- Design tokens (cores, espaçamentos, raios, sombras) ---------- */
+        :root {
+            /* Paleta principal */
+            --brand: #082836;
+            --brand-dark: #0d3444;
+            --brand-dark2: #001e2a;
+            --brand-dark3: #143340;
+
+            --gold: #bc955c;
+            --accent: #61b400;
+
+            /* Neutros */
+            --neutral-1: #0f172a;
+            /* texto escuro */
+            --neutral-2: #f4f1f1;
+            /* superfícies sutis */
+            --neutral-3: #b1b1b1;
+            /* borda/legenda */
+            --neutral-4: #c8c8c8;
+            /* borda alternativa */
+            --tint-100: #f1f4ff;
+            /* leve azulado para ícones/realces */
+
+            /* Superfícies e estados */
+            --surface: #ffffff;
+            --faint: #f7f9ff;
+
+            /* Texto em superfícies escuras | aliases de compatibilidade */
+            --text-inverse: #ffffff;
+            --warning: #ffc800;
+            --alert: #ff0000;
+
+            /* Aliases p/ manter compatibilidade com o CSS existente */
+            --color-negative: var(--text-inverse);
+            --color-negative2: var(--warning);
+            --color-negative3: var(--alert);
+
+            /* Utilidades */
+            --border-subtle: rgba(0, 0, 0, 0.06);
+            --border-subtle-strong: rgba(0, 0, 0, 0.08);
+            --border-dot: rgba(0, 0, 0, 0.15);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+            /* Dimensões */
+            --size: 22px;
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+
+            /* Assets */
+            --banner-img: url("assets/jpi/banner-full.jpg");
+        }
+
+        /* =========================================================
+   Base
+   ========================================================= */
+        body {
+            font-family: "Outfit", sans-serif;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border-subtle-strong);
+        }
+
+        .shadow-soft {
+            box-shadow: var(--shadow-soft);
+        }
+
+        .rounded-2xl {
+            border-radius: var(--radius-sm);
+        }
+
+        .bg-faint {
+            background: var(--faint);
+        }
+
+        /* =========================================================
+   Botões & Badges
+   ========================================================= */
+        .btn-brand {
+            background: var(--brand);
+            color: var(--text-inverse);
+            border: none;
+        }
+
+        .btn-brand:hover {
+            background: var(--brand-dark);
+            color: var(--text-inverse);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--text-inverse);
+            border: 0;
+            min-width: 190px;
+            font-weight: 400;
+            padding: 0.85rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-accent:hover {
+            background: var(--brand-dark);
+            color: var(--text-inverse);
+        }
+
+        .btn-login {
+            min-width: 90px;
+            font-size: small;
+            order: 1;
+        }
+
+        .btn-navbar {
+            border: 0;
+        }
+
+        .badge-accent {
+            background: var(--accent);
+        }
+
+        /* =========================================================
+   Navbar
+   ========================================================= */
+        .navbar-brand {
+            padding: 10px 0;
+        }
+
+        .navbar-nav {
+            color: var(--brand);
+            font-size: 1.2rem;
+        }
+
+        .navbar-nav>.nav-item {
+            padding: 7px;
+        }
+
+        .nav-link {
+            color: var(--brand);
+        }
+
+        .nav-link:hover,
+        .navbar-nav :hover {
+            text-decoration: underline;
+        }
+
+        /* .navbar-body :nth-child(2) {
+            order: 1;
+        } */
+
+        /* =========================================================
+   Hero / Banner
+   ========================================================= */
+        .full-banner {
+            background-image: var(--banner-img);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            width: 100%;
+            min-height: 650px;
+            background-color: var(--brand-dark2);
+        }
+
+        .full-banner>.container {
+            display: none;
+        }
+
+        /* =========================================================
+   Ícones / Imagens
+   ========================================================= */
+        .feature-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            display: inline-grid;
+            place-items: center;
+            border-radius: var(--radius-md);
+            background: var(--tint-100);
+            color: var(--brand);
+        }
+
+        .machine-mos {
+            width: 175px;
+        }
+
+        .machine-pro {
+            width: 165px;
+        }
+
+        .machine-smart {
+            width: 220px;
+        }
+
+        .machine-card img {
+            height: 400px;
+            object-fit: contain;
+            margin: auto;
+            margin-top: -50px;
+        }
+
+        /* =========================================================
+   Títulos / Tipografia
+   ========================================================= */
+        .title {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .title-negative {
+            color: var(--color-negative);
+        }
+
+        /* =========================================================
+   Cards / Preços / Listas
+   ========================================================= */
+        .card {
+            background-color: var(--neutral-2);
+            border: 0;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-weight: 900;
+            font-size: x-large;
+            margin-bottom: 2rem;
+        }
+
+        .card-price {
+            text-align: center;
+        }
+
+        .old-price {
+            color: var(--color-negative3);
+        }
+
+
+        .old-price :nth-child(2) {
+            text-decoration: line-through;
+            font-size: large;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 2.5rem;
+            color: var(--accent);
+        }
+
+        .installment {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .small {
+            margin-top: 2rem;
+        }
+
+        .small>li::before {
+            content: url(assets/jpi/check-circle-fill.svg);
+            margin-inline-end: 10px;
+            vertical-align: sub;
+        }
+
+        /* =========================================================
+   Seção de Planos
+   ========================================================= */
+        .plans {
+            background-color: var(--brand);
+            padding-bottom: 1rem;
+        }
+
+        .plan {
+            background-color: var(--neutral-3);
+            margin-bottom: 1rem;
+        }
+
+        .is-selected {
+            background-color: var(--accent);
+        }
+
+        .plan-card.is-selected {
+            color: var(--brand) !important;
+        }
+
+        .plan-card.is-selected>.text-secondary {
+            color: var(--brand) !important;
+        }
+
+
+        .plan-radio {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+            inline-size: var(--size);
+            block-size: var(--size);
+            border-radius: 50%;
+            border: thick solid var(--neutral-2);
+            background: var(--neutral-2);
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: sub;
+        }
+
+        [aria-checked="true"] {
+            background-color: var(--accent);
+        }
+
+        .plan-title {
+            font-size: 1rem;
+            color: var(--color-negative);
+            padding-left: 5px;
+        }
+
+        .plan-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--neutral-3) !important;
+        }
+
+        .plan-card {
+            background-color: var(--color-negative);
+            color: var(--neutral-3);
+            height: 68%;
+        }
+
+        .text-secondary {}
+
+        .bi-truck {
+            font-size: 1rem;
+        }
+
+        /* =========================================================
+   Seção Cards (benefícios)
+   ========================================================= */
+        .cards-section {
+            background-color: var(--brand-dark2);
+            color: var(--color-negative);
+        }
+
+        .cards-itens {
+            min-width: 33%;
+            display: flex;
+            align-items: center;
+            background-color: var(--brand-dark3);
+        }
+
+        .cards-itens>span {
+            align-content: center;
+            text-align: left;
+            min-height: 60px;
+            line-height: 1.2;
+            font-size: 0.85rem;
+            margin-left: 5px;
+        }
+
+        /* =========================================================
+   Tabela de Taxas
+   ========================================================= */
+        .table-plan {
+            border: 1px solid var(--neutral-3);
+            border-radius: var(--radius-sm);
+        }
+
+        .table-titulo-desktop {
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 19px;
+            background-color: var(--neutral-3);
+            border-radius: 10px;
+            color: var(--color-negative);
+            margin-bottom: 10px;
+        }
+
+        .table-titulo-desktop-active {
+            background-color: var(--accent);
+        }
+
+        .table-text-primary {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .table-text-secondary {
+            font-size: 1.4rem;
+            font-weight: 200;
+        }
+
+        .rates-table th,
+        .rates-table td {
+            white-space: nowrap;
+        }
+
+        .rates-table thead th,
+        .rates-table tbody th {
+            font-weight: 800;
+        }
+
+        .rates-table tbody th {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .rates-table td,
+        .rates-table th {
+            text-align: center;
+        }
+
+        .table> :not(caption)>*>* {
+            border: unset;
+        }
+
+        /* Chips de seleção de taxa */
+        .rate-chip input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            pointer-events: none;
+        }
+
+        .rate-chip .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .6rem .9rem;
+            border-radius: 10px;
+            background: var(--neutral-3);
+            color: var(--color-negative);
+            font-weight: 600;
+            transition: .2s ease-in-out;
+            border: 1px solid var(--border-subtle);
+            width: 100%;
+        }
+
+        .rate-chip input:checked+.chip {
+            background: var(--accent);
+            color: var(--text-inverse);
+        }
+
+        .rate-chip .chip .dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid var(--border-dot);
+            background: var(--color-negative);
+            display: inline-block;
+        }
+
+        .rate-chip input:checked+.chip .dot {
+            border-color: var(--color-negative);
+            background: var(--accent);
+        }
+
+        /* Dots utilitários */
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-green {
+            background: var(--accent);
+        }
+
+        .dot-gray {
+            background: var(--neutral-4);
+        }
+
+        /* =========================================================
+   Simulação / Taxas das Maquininhas
+   ========================================================= */
+        .sim-title {
+            color: var(--gold);
+            font-weight: 600;
+            margin: 0 0 2rem 0;
+        }
+
+        .sim-subtitle {
+            color: var(--brand);
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 0 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--brand);
+        }
+
+        .sim-body {
+            background-color: var(--color-negative);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .simulacao {
+            background: var(--brand-dark3);
+            color: var(--color-negative);
+        }
+
+        .sim-box {
+            background: var(--surface);
+            color: var(--neutral-1);
+            border-radius: 16px;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .sim-heading {
+            font-size: 1rem;
+            margin-bottom: .5rem;
+        }
+
+        .sim-value {
+            font-weight: 700;
+            font-size: clamp(1.75rem, 3vw + .75rem, 2.75rem);
+            line-height: 1.1;
+        }
+
+        .sim-sub {
+            font-size: .9rem;
+            line-height: 1.1;
+            color: var(--brand);
+        }
+
+        .sim-chip {
+            display: inline-block;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 2.5rem;
+        }
+
+        .sim-inline-btn {
+            display: inline-block;
+            width: fit-content;
+            border-radius: 999px;
+            background: var(--accent);
+            color: var(--color-negative);
+            font-weight: 700;
+            font-style: italic;
+            padding: .4rem .9rem;
+        }
+
+        .sim-inline-btn-modify {
+            background-color: var(--neutral-3);
+        }
+
+        .sim-cta {
+            min-width: 190px;
+            font-weight: 400;
+            padding: 0.85rem;
+            font-size: 1.2rem;
+        }
+
+        .input-xs-label {
+            font-size: 1rem;
+            color: var(--brand);
+        }
+
+        .sim-dark-card {
+            background: var(--color-negative);
+            border-radius: 16px;
+            padding: 20px;
+            height: 100%;
+            color: var(--brand);
+        }
+
+        .sim-divider {
+            height: 1px;
+            background: var(--border-subtle);
+            margin: .75rem 0;
+        }
+
+        /* =========================================================
+   Conta Digital Completa
+   ========================================================= */
+        .account-section {
+            background: var(--gold);
+            color: var(--brand-dark3);
+        }
+
+        .account-kicker {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--brand);
+        }
+
+        .account-kicker>span {
+            text-align: left;
+            font-size: 1.5rem;
+        }
+
+        .account-image {
+            color: var(--brand);
+        }
+
+        .account-feature-list {
+            margin: 1rem 0 1.75rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .account-feature-list li {
+            position: relative;
+            padding-left: 1.15rem;
+            margin-bottom: .65rem;
+            font-size: 1.05rem;
+            color: var(--brand);
+        }
+
+        .account-feature-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: .05rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            color: var(--brand);
+            opacity: .9;
+        }
+
+        .account-illustration {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+        }
+
+        /* =========================================================
+   Baixe o App
+   ========================================================= */
+        .app-section {
+            background: var(--neutral-2);
+        }
+
+        .app-card {
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .app-kicker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .75rem;
+            color: var(--brand);
+        }
+
+        .app-kicker h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: .3px;
+            color: var(--brand);
+            text-transform: uppercase;
+        }
+
+        .app-hero {
+            border-radius: 16px;
+        }
+
+        .store-badge img {
+            display: block;
+            height: auto;
+            max-height: 48px;
+        }
+
+        .qr-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            justify-items: center;
+        }
+
+        .qr-link {
+            display: inline-block;
+            padding: .35rem;
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--shadow-soft);
+            transition: transform .15s ease-out, box-shadow .15s ease-out;
+        }
+
+        .qr-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, .08);
+        }
+
+        .badges-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* =========================================================
+   Carrossel
+   ========================================================= */
+        .carousel-inner {
+            width: 95%;
+            margin: auto;
+        }
+
+        .carousel-control-next,
+        .carousel-control-prev {
+            width: unset;
+        }
+
+        .carousel-control-next-icon,
+        .carousel-control-prev-icon {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: var(--gold);
+            border-radius: 50px;
+        }
+
+        .carousel-control-prev-icon {
+            background-image: url("assets/jpi/14.svg");
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("assets/jpi/15.svg");
+        }
+
+        .carousel-item-modify {
+            background-color: var(--neutral-2);
+            font-style: italic;
+            font-weight: 600;
+            color: var(--neutral-3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-item-modify>img {
+            margin: auto;
+            margin-bottom: 10px;
+        }
+
+        .logo-box {
+            text-align: center;
+        }
+
+        .accept-card {
+            text-align: center;
+            background-color: var(--neutral-2);
+            border-radius: var(--radius-sm);
+        }
+
+        .image-group {
+            width: 350px;
+        }
+
+        .mini-hint {
+            font-size: 0.75rem;
+        }
+
+        /* =========================================================
+   Footer (Ajuda)
+   ========================================================= */
+        .jpi-footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .jpi-footer .footer-wrap {
+            padding: 28px 0;
+        }
+
+        .jpi-footer .footer-title {
+            font-weight: 800;
+            color: var(--brand);
+            margin: 0 0 .75rem 0;
+            font-size: clamp(1.05rem, 1.2vw + .6rem, 1.25rem);
+            padding-left: 3rem;
+        }
+
+        .jpi-footer .contact-list {
+            list-style: none;
+            padding: 0 0 0 3rem;
+            margin: 0;
+        }
+
+        .jpi-footer .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-size: clamp(1rem, .9vw + .7rem, 1.25rem);
+            color: var(--brand-dark3);
+            line-height: 1.3;
+            margin-bottom: .5rem;
+        }
+
+        .jpi-footer .contact-list i {
+            font-size: 1.45rem;
+            color: var(--brand);
+        }
+
+        .jpi-footer .contact-list a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .jpi-footer .contact-list a:hover {
+            text-decoration: underline;
+        }
+
+        .jpi-footer .footer-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .jpi-footer .social {
+            display: inline-flex;
+            gap: .6rem;
+        }
+
+        .jpi-footer .social a {
+            width: 40px;
+            height: 40px;
+            display: inline-grid;
+            place-items: center;
+            color: var(--brand);
+            border-radius: .5rem;
+            text-decoration: none;
+            transition: transform .15s ease-out, opacity .15s ease-out;
+        }
+
+        .jpi-footer .social a:hover {
+            transform: translateY(-2px);
+            opacity: .9;
+        }
+
+        .footer-bottom {
+            background: var(--brand-dark2);
+            color: var(--color-negative);
+            padding: 8px 0;
+            font-size: .95rem;
+        }
+
+        .footer-logo-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bi-instagram,
+        .bi-youtube,
+        .bi-linkedin {
+            font-size: 1.5rem;
+        }
+
+        /* =========================================================
+   Componentes misc
+   ========================================================= */
+        .form-range::-webkit-slider-thumb {
+            background: var(--brand);
+        }
+
+        .plan-pop {
+            border: 2px solid var(--brand);
+        }
+
+        /* =========================================================
+   Responsivo
+   ========================================================= */
+
+        /* Mobile layout */
+        @media (max-width: 767.98px) {
+            .jpi-footer .footer-wrap {
+                text-align: center;
+                padding-top: 36px;
+                padding-bottom: 20px;
+            }
+
+            .jpi-footer .contact-list {
+                align-items: center;
+                padding-left: 0;
+            }
+
+            .jpi-footer .contact-list li {
+                justify-content: center;
+                font-size: 1.15rem;
+            }
+
+            .jpi-footer .footer-logo {
+                height: 46px;
+                margin-bottom: .75rem;
+            }
+
+            .jpi-footer .footer-title {
+                padding-left: 0;
+            }
+
+            .title {
+                margin-top: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .badges-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .app-kicker h3 {
+                font-size: 1rem;
+            }
+        }
+
+        /* 320–430px */
+        @media (min-width: 320px) and (max-width: 500px) {
+            .machine-card img {
+                width: 75px;
+                position: absolute;
+                top: -60px;
+                left: 35px;
+            }
+
+            .card-body {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .card-body .card-price {
+                margin-left: 5rem;
+            }
+
+            .card-body .small {
+                margin-top: 1.75rem;
+            }
+
+            .card-body .card-title {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .card-body .old-price {
+                font-size: 1rem;
+                line-height: 0.75rem;
+            }
+
+            .card-body .price {
+                font-size: 2rem;
+            }
+
+            .card-body .installment {
+                font-size: 1rem;
+                margin: .5rem 0;
+            }
+
+            .card-body-modify {
+                background-color: var(--brand);
+                border-radius: var(--radius-sm);
+                color: var(--color-negative);
+            }
+
+            .card-body-old-price-modify {
+                color: var(--color-negative2) !important;
+            }
+
+            .card-body-small-modify {
+                color: var(--color-negative) !important;
+            }
+
+            .rates-chips {
+                gap: .15rem;
+            }
+
+            .rate-chip .chip {
+                gap: .1rem;
+                padding: .75rem !important;
+                font-size: .7rem !important;
+            }
+
+            .rate-chip .chip .dot {
+                width: 15px;
+                height: 15px;
+            }
+
+            .rates-table tbody th {
+                padding-left: 0;
+            }
+        }
+
+        /* 510–730px */
+        @media (min-width: 500px) and (max-width: 765px) {
+            .machine-card img {
+                width: 115px;
+                position: absolute;
+                top: 25px;
+                left: 80px;
+            }
+
+            .card-body {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .card-body .card-price {
+                margin-left: 16rem;
+            }
+
+            .card-body .btn-brand {
+                display: block;
+                width: 160px !important;
+                position: absolute;
+                bottom: 50px;
+                left: 56px;
+            }
+
+            .card-body .small {
+                margin-top: 1.75rem;
+                margin-left: 14rem;
+            }
+
+            .card-body .card-title {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .card-body .old-price {
+                font-size: 1rem;
+                line-height: 0.75rem;
+            }
+
+            .card-body .price {
+                font-size: 2rem;
+            }
+
+            .card-body .installment {
+                font-size: 1rem;
+                margin: .5rem 0;
+            }
+
+            .card-body-modify {
+                background-color: var(--brand);
+                border-radius: var(--radius-sm);
+                color: var(--color-negative);
+            }
+
+            .card-body-old-price-modify {
+                color: var(--color-negative2) !important;
+            }
+
+            .card-body-price-modify {
+                margin-left: -16rem !important;
+            }
+
+            .card-body-small-modify {
+                margin-left: 0 !important;
+                color: var(--color-negative) !important;
+            }
+
+            .machine-card-img-modify {
+                left: unset !important;
+                right: 80px;
+            }
+
+            .card-body-btn-brand-modify {
+                left: unset !important;
+                right: 56px;
+            }
+
+            .title {
+                margin-top: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .rates-chips {
+                gap: .2rem;
+            }
+        }
+
+        @media (max-width: 730px) {
+            .simulacao {
+                background-color: var(--color-negative);
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            .simulacao .title {
+                color: var(--brand);
+                margin: 0 !important;
+            }
+
+            .sim-subtitle {
+                font-size: 1.5rem;
+                font-weight: 400;
+                margin-left: 0;
+                margin-right: 0;
+                margin-bottom: 0 !important;
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
+
+            .sim-dark-card {
+                padding: 8px;
+            }
+
+            .sim-body {
+                padding: 0 16px 24px;
+            }
+
+            .sim-box {
+                padding: 8px;
+            }
+
+            .sim-inline-btn {
+                font-size: .8rem;
+            }
+
+            .cards-itens {
+                flex-direction: column;
+            }
+
+            .cards-itens>span {
+                text-align: center;
+                margin-left: 0;
+            }
+
+            .account-section {
+                text-align: center;
+            }
+
+            .account-feature-list li {
+                text-align: left;
+                max-width: 32rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .app-card .img-main {
+                border-radius: 16px;
+            }
+        }
+
+        @media (max-width: 990px) {
+            .full-banner {
+                background-position: center bottom;
+                width: 100%;
+                min-height: 140px;
+            }
+
+            .navbar-body :nth-child(2) {
+                order: unset;
+            }
+
+            .title {
+                margin-top: 2rem;
+                margin-bottom: 4rem;
+                text-align: center;
+            }
+
+            .sim-title {
+                margin-top: 0 !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .card-body :nth-child(3) {
+                order: 2;
+            }
+
+            .card-body :nth-child(2) {
+                order: 3;
+            }
+
+            .table-sm> :not(caption)>*>* {
+                padding: .1rem;
+                font-size: 1rem;
+            }
+
+            .rate-chip .chip {
+                gap: .25rem;
+                padding: 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cards-itens {
+                min-height: 130px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .full-banner {
+                background-size: cover;
+            }
+
+            .image-group {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <header></header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-soft">
+        <div class="container navbar-body">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/jpi/logo-jpi.svg" alt="JPI Capital Bank" class="img-fluid" width="133px"
+                    height="33px" />
+            </a>
+            <button type="button" class="btn btn-brand btn-login rounded-pill">
+                <i class="bi bi-person-circle"></i> Login
+            </button>
+            <button class="navbar-toggler btn-navbar" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#planos">Planos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#maquininhas">Maquininhas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#vantagens">Vantagens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#app">Baixe o App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ajuda">Ajuda</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Full-banner -->
+    <section class="full-banner py-5 py-lg-6">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6">
+                    <span class="badge rounded-pill badge-accent text-dark mb-3">Sem aluguel • Receba por aproximação •
+                        Aceite Pix</span>
+                    <h1 class="display-5 fw-bold mb-3">Escolha sua Maquininha!</h1>
+                    <p class="lead">
+                        Com a JPI Capital Bank você tem taxas claras, comprovante por SMS
+                        ou impresso, chip 4G grátis, e conta digital completa para
+                        gerenciar suas vendas.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#maquininhas" class="btn btn-brand btn-lg"><i class="bi bi-bag"></i> Ver opções</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planos -->
+    <section id="planos" class="plans">
+        <div class="container">
+            <h2 class="pb-3 pt-3 text-center title-negative">Escolha seu plano</h2>
+
+            <div class="row g-4">
+                <div class="col-sm-6 col-md-6">
+                    <div>
+                        <form>
+                            <div class="p-4 rounded-2xl plan">
+                                <input type="radio" name="plano" id="plano-diario" value="plano-diario"
+                                    class="plan-radio" />
+                                <label for="plano-diario" class="plan-title">
+                                    <span class="radio" aria-hidden="true"></span>
+                                    Plano JPI Diário
+                                </label>
+                            </div>
+                    </div>
+                    <div class="p-4 rounded-2xl plan-card">
+                        <p>
+                            Receba suas vendas de cartão, no próximo dia útil direto na
+                            conta digital JPI
+                        </p>
+                        <ul class="mt-2 text-secondary plan-list">
+                            <li>Zero Mensalidade</li>
+                            <li>Débito <strong>1,19%</strong></li>
+                            <li>Crédito <strong>3,27%</strong></li>
+                            <li>Frente Grátis <i class="bi bi-truck"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div>
+                        <div class="p-4 rounded-2xl plan">
+                            <input type="radio" name="plano" id="plano-economico" value="plano-economico"
+                                class="plan-radio" />
+                            <label for="plano-economico" class="plan-title">
+                                <span class="radio" aria-hidden="true"></span>
+                                Plano JPI Econômico
+                            </label>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="p-4 rounded-2xl plan-card">
+                        <p>
+                            Receba suas vendas de cartão, conforme as parcelas, direto na conta digital JPI
+                        </p>
+                        <ul class="mt-2 text-secondary plan-list">
+                            <li>Zero Mensalidade</li>
+                            <li>Débito <strong>1,15%</strong></li>
+                            <li>Crédito <strong>2,40%</strong></li>
+                            <li>Frente Grátis <i class="bi bi-truck"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maquininhas -->
+    <section id="maquininhas">
+        <div class="container">
+            <h2 class="title">Escolha sua maquininha!</h2>
+            <div class="row g-4">
+                <!-- JPI MPOS -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 machine-card rounded-2xl">
+                        <img class="machine-mos" src="/assets/jpi/machine-smart.png" alt="JPI MPOS" />
+                        <div class="card-body">
+                            <div class="card-price">
+                                <h5 class="card-title">JPI SMART</h5>
+                                <div class="old-price">
+                                    <span>de</span>
+                                    <span>R$799,00</span>
+                                    <span>por</span>
+                                </div>
+                                <div class="price">
+                                    <span>R$497,00</span>
+                                </div>
+                                <div class="installment">
+                                    <span>ou 12x de <strong>R$41,41</strong></span>
+                                </div>
+                            </div>
+
+                            <a href="" class="btn btn-brand w-100 badge-accent rounded-pill" target="_blank">
+                                <i class="bi bi-plus-circle-fill"></i> Adquirir</a>
+
+                            <ul class="small text-secondary ps-3">
+                                <li>Sem aluguel</li>
+                                <li>Imprime comprovante</li>
+                                <li>Não precisa de celular</li>
+                                <li>Receba por aproximação</li>
+                                <li>Chip 4G grátis + Wi‑Fi</li>
+                                <li>Aceite Pix com QR Code</li>
+                                <li>Interface rápida</li>
+                                <li>Tela Touchscreen</li>
+                                <li>Sistema Android</li>
+                                <li>Bateria que dura de 2 a 3 dias</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- JPI SMART -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 machine-card rounded-2xl">
+                        <img class="machine-smart machine-card-img-modify" src="/assets/jpi/machine-pro.png"
+                            alt="JPI SMART" />
+
+                        <div class="card-body card-body-modify">
+                            <div class="card-price card-body-price-modify">
+                                <h5 class="card-title">JPI PRO</h5>
+                                <div class="old-price card-body-old-price-modify">
+                                    <span>de</span>
+                                    <span>R$699,00</span>
+                                    <span>por</span>
+                                </div>
+                                <div class="price">
+                                    <span>R$397,00</span>
+                                </div>
+                                <div class="installment">
+                                    <span>ou 12x de <strong>R$33,08</strong></span>
+                                </div>
+                            </div>
+
+                            <a href="" class="btn btn-brand w-100 badge-accent rounded-pill card-body-btn-brand-modify"
+                                target="_blank">
+                                <i class="bi bi-plus-circle-fill"></i> Adquirir</a>
+                            <ul class="small text-secondary ps-3 card-body-small-modify">
+                                <li>Sem aluguel</li>
+                                <li>Imprime comprovante</li>
+                                <li>Não precisa de celular</li>
+                                <li>Receba por aproximação</li>
+                                <li>Chip 4G grátis + Wi‑Fi</li>
+                                <li>Aceite Pix com QR Code</li>
+                                <li>Interface rápida</li>
+                                <li>Tela Touchscreen</li>
+                                <li>Bateria que dura até 12 horas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- JPI PRO -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 machine-card rounded-2xl">
+                        <img class="machine-pro" src="/assets/jpi/machine-mpos.png" alt="JPI MINI" />
+                        <div class="card-body">
+                            <div class="card-price">
+                                <h5 class="card-title">JPI MINI</h5>
+                                <div class="old-price">
+                                    <span>de</span>
+                                    <span>R$399,00</span>
+                                    <span>por</span>
+                                </div>
+                                <div class="price">
+                                    <span>R$247,00</span>
+                                </div>
+                                <div class="installment">
+                                    <span>ou 12x de <strong>R$20,58</strong></span>
+                                </div>
+                            </div>
+
+                            <a href="" class="btn btn-brand w-100 badge-accent rounded-pill" target="_blank">
+                                <i class="bi bi-plus-circle-fill"></i> Adquirir</a>
+
+                            <ul class="small text-secondary ps-3">
+                                <li>Sem aluguel</li>
+                                <li>Comprovante por SMS</li>
+                                <li>Não precisa de celular</li>
+                                <li>Receba por aproximação</li>
+                                <li>Chip 4G grátis + Wi‑Fi</li>
+                                <li>Aceite Pix com QR Code</li>
+                                <li>Interface rápida</li>
+                                <li>Bateria Longa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Tabela -->
+    <section id="taxas" class="py-5">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="table-text-primary">Taxas imbatíveis</h2>
+                <p class="table-text-secondary">para qualquer negócio!</p>
+            </div>
+
+            <!-- MOBILE: tabela dinâmica -->
+            <div class="d-md-none">
+                <div class="d-flex justify-content-center mb-3 rates-chips">
+                    <label class="rate-chip col-6">
+                        <input type="radio" name="ratePlan" value="diario" checked />
+                        <span class="chip"><span class="dot" aria-hidden="true"></span> Plano Diário</span>
+                    </label>
+                    <label class="rate-chip col-6">
+                        <input type="radio" name="ratePlan" value="economico" />
+                        <span class="chip"><span class="dot" aria-hidden="true"></span> Plano Econômico</span>
+                    </label>
+                </div>
+
+                <div class="bg-white p-3 table-plan">
+                    <table class="table table-sm align-middle mb-0 rates-table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Visa / Master</th>
+                                <th scope="col">ELO</th>
+                                <th scope="col">Outros</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rates-mobile-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- DESKTOP/TABLET: duas colunas, estático -->
+            <div class="row g-4 d-none d-md-flex">
+                <!-- COLUNA 1 -->
+                <div class="col-md-6">
+                    <div class="bg-white p-3 h-100 table-plan">
+                        <div class="table-titulo-desktop table-titulo-desktop-active">
+                            Plano Diário
+                        </div>
+                        <table class="table table-sm align-middle mb-0 rates-table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Visa / Master</th>
+                                    <th>ELO</th>
+                                    <th>Outros</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rates-diario-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- COLUNA 2 -->
+                <div class="col-md-6">
+                    <div class="bg-white p-3 h-100 table-plan">
+                        <div class="table-titulo-desktop">
+                            Plano Econômico
+                        </div>
+                        <table class="table table-sm align-middle mb-0 rates-table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Visa / Master</th>
+                                    <th>ELO</th>
+                                    <th>Outros</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rates-economico-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulação -->
+    <section id="simulacao" class="simulacao py-5">
+        <h2 class="title title-negative sim-title">Taxas das Maquininhas</h2>
+        <div class="container sim-body">
+            <p class="text-center mb-4 sim-subtitle">Simulação</p>
+
+            <div class="row g-3 g-lg-4 align-items-stretch">
+
+
+                <!-- Col: formulário -->
+                <div class="col-lg-4">
+                    <div class="sim-dark-card h-100">
+                        <label for="sim-valor" class="input-xs-label mb-1">Qual o valor da sua venda?</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">R$</span>
+                            <input id="sim-valor" type="text" inputmode="numeric" class="form-control" value="1000000"
+                                aria-label="Valor da venda">
+                        </div>
+
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <label for="sim-taxa-jpi" class="input-xs-label mb-1">Taxa JPI</label>
+                                <div class="input-group">
+                                    <input id="sim-taxa-jpi" type="text" inputmode="decimal" class="form-control"
+                                        value="1,19">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="sim-tipo" class="input-xs-label mb-1">Tipo</label>
+                                <select id="sim-tipo" class="form-select">
+                                    <option value="debito" selected>Débito</option>
+                                    <option value="credito">Crédito</option>
+                                    <option value="pix">Pix</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <label for="sim-taxa-conc" class="input-xs-label mb-1 mt-3">Taxa média dos concorrentes</label>
+                        <div class="input-group">
+                            <input id="sim-taxa-conc" type="text" inputmode="decimal" class="form-control" value="1,55">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col: resultado JPI -->
+                <div class="col-lg-4">
+                    <div class="sim-box h-100 d-flex flex-column">
+                        <div class="sim-heading">Com a <strong>JPI Capital Bank</strong> você vai receber:</div>
+                        <div id="sim-valor-jpi" class="sim-value" aria-live="polite">R$ 9.881,00</div>
+                        <span class="sim-inline-btn mt-2 w-fit">Valor com taxa JPI</span>
+
+                        <div class="mt-4 sim-heading">Com a taxa média do mercado você receberia:</div>
+                        <div id="sim-valor-conc" class="sim-value" aria-live="polite">R$ 9.845,00</div>
+                        <span class="sim-inline-btn sim-inline-btn-modify mt-2 w-fit">Valor com concorrentes</span>
+
+                        <div class="mt-auto"></div>
+                    </div>
+                </div>
+
+                <!-- Col: economia / CTA -->
+                <div class="col-lg-4">
+                    <div class="sim-dark-card h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="sim-heading">Com sua maquininha <strong>JPI Capital Bank</strong> você
+                                economiza:</div>
+                            <span id="sim-eco-chip" class="sim-chip success">+ 36,00</span>
+                            <p class="sim-sub mt-3 mb-0">
+                                Essa é a diferença entre trabalhar <strong>com a JPI</strong>
+                                e as outras máquinas do mercado.
+                            </p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="#maquininhas" class="btn btn-brand badge-accent rounded-pill sim-cta">
+                                Pedir Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section id="vantagens" class="cards-section">
+        <div class="py-5 rounded-2xl container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-12">
+                    <h3 class="mb-2 text-center">Vantagens</h3>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-1">
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/01.svg" alt="Sem Mensalidade" width="40px" height="40px" />
+                                <span>Sem Mensalidade</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/02.svg" alt="Suporte com foco no cliente" width="40px"
+                                    height="40px" />
+                                <span>Suporte com foco no cliente</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/03.svg" alt="Relatório das Suas Vendas" width="40px"
+                                    height="40px" />
+                                <span>Relatório das Suas Vendas</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/04.svg" alt="Receba em até 1 dia útil" width="40px"
+                                    height="40px" />
+                                <span>Receba em até 1 dia útil</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/05.svg" alt="Emissão de Boletos" width="40px" height="40px" />
+                                <span>Emissão de Boletos</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/06.svg" alt="Link de Pagamento" width="40px" height="40px" />
+                                <span>Link de Pagamento</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/07.svg" alt="Simulador de Vendas" width="40px" height="40px" />
+                                <span>Simulador de Vendas</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/08.svg" alt="Resolução de chamados em até 24h úteis" width="40px"
+                                    height="40px" />
+                                <span>Resolução de chamados em até 24h úteis</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/09.svg" alt="Antecipação de Recebíveis" width="40px"
+                                    height="40px" />
+                                <span>Antecipação de Recebíveis</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/10.svg" alt="POS com chip 4G + Wi-Fi" width="40px"
+                                    height="40px" />
+                                <span>POS com chip 4G + Wi-Fi</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/11.svg" alt="Taxas Transparentes e Acessíveis" width="40px"
+                                    height="40px" />
+                                <span>Taxas Transparentes e Acessíveis</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-4 rounded cards-itens">
+                                <img src="/assets/jpi/12.svg" alt="Envio para todo Brasil" width="40px" height="40px" />
+                                <span>Envio para todo Brasil</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conta Digital Completa -->
+    <section id="conta-digital" class="account-section py-5 py-md-6">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <!-- Texto -->
+                <div class="col-lg-6">
+                    <!-- Ícone somente no mobile -->
+
+                    <h2 class="account-kicker mb-3">
+                        <img src="/assets/jpi/13.svg" alt="Icone Recibo" width="65px" height="65px"
+                            class="account-image" />
+                        <span>
+                            Conta Digital Completa<br class="d-none d-md-block">
+                            com a sua maquininha
+                        </span>
+                    </h2>
+
+                    <ul class="account-feature-list">
+                        <li><strong>Clareza total:</strong> você entende quanto vende, quanto recebe e quanto paga</li>
+                        <li><strong>Gestão financeira centralizada</strong>, na palma da mão</li>
+                        <li><strong>Zero dor de cabeça</strong> com burocracia</li>
+                        <li>Acesso via <strong>app</strong> ou <strong>navegador</strong></li>
+                        <li>Sistema <strong>leve, robusto e completo</strong></li>
+                        <li><strong>Autenticação segura</strong></li>
+                    </ul>
+
+                    <a href="#app" class="btn btn-accent rounded-pill px-4 py-2">
+                        Abrir conta Gratuita
+                    </a>
+                </div>
+
+                <!-- Ilustração (só desktop/tablet) -->
+                <div class="col-lg-6 d-none d-md-block text-center">
+                    <img src="assets/jpi/pc.png" alt="Dashboard da conta digital JPI Capital Bank exibido no computador"
+                        class="account-illustration" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Baixe o App -->
+    <section id="app" class="app-section">
+        <div class="container">
+
+            <!-- DESKTOP/TABLET: apenas uma imagem -->
+            <div class="d-none d-md-block py-5">
+                <!-- Substitua a imagem abaixo por um banner único com seu layout desktop -->
+                <img src="assets/jpi/app-desktop.png" alt="Baixe o app JPI Capital Bank"
+                    class="img-fluid app-hero shadow-soft w-100">
+            </div>
+
+            <!-- MOBILE: card com título, imagem, botões e QR codes -->
+            <div class="d-block d-md-none">
+                <div class="app-card p-4">
+
+                    <!-- Título + ícone -->
+                    <div class="app-kicker mb-3">
+                        <img src="assets/jpi/icone-jpi.png" alt="" width="52" height="52" class="rounded-2">
+                        <h3>Baixe nosso app</h3>
+                    </div>
+
+                    <!-- Foto principal -->
+                    <img src="assets/jpi/app-mobile.png" alt="Pessoa utilizando o app JPI Capital Bank"
+                        class="img-fluid img-main mb-3">
+
+                    <!-- Botões das lojas -->
+                    <div class="badges-group gap-3 mb-3">
+                        <a class="store-badge" href="https://play.google.com/store/apps/details?id=SEU_APP_ID"
+                            target="_blank" rel="noopener" aria-label="Abrir na Google Play">
+                            <img src="assets/jpi/google-play-badge.svg" alt="Disponível no Google Play" width="170"
+                                height="50">
+                        </a>
+
+                        <a class="store-badge" href="https://apps.apple.com/app/idSEU_APP_ID" target="_blank"
+                            rel="noopener" aria-label="Abrir na App Store">
+                            <img src="assets/jpi/app-store-badge.svg" alt="Baixar na App Store" width="170" height="50">
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">Depoimentos de quem confia</h2>
+
+            <!-- Mobile: 1 por slide -->
+            <div id="depoCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="p-4 rounded-2xl carousel-item-modify">
+                            <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                            <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s.</p>
+                            <div class="small text-secondary">— Ana P., MEI</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="p-4 rounded-2xl carousel-item-modify">
+                            <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                            <p class="mb-1">“is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s.”</p>
+                            <div class="small text-secondary">— Carlos M., lojista</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="p-4 rounded-2xl carousel-item-modify">
+                            <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                            <p class="mb-1">“is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s.”</p>
+                            <div class="small text-secondary">— Raphael M., lojista</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="p-4 rounded-2xl carousel-item-modify">
+                            <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                            <p class="mb-1">“is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s.”</p>
+                            <div class="small text-secondary">— Carlos M., lojista</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="p-4 rounded-2xl carousel-item-modify">
+                            <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                            <p class="mb-1">“is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s.”</p>
+                            <div class="small text-secondary">— Raphael M., lojista</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- controles... -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#depoCarouselMobile"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#depoCarouselMobile"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+            </div>
+
+            <!-- Desktop: 3 por slide -->
+            <div id="depoCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4">
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry.
+                                        Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="small text-secondary">— Ana P., 1</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="small text-secondary">— Ana P., 2</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.”</p>
+                                    <div class="small text-secondary">— Ana P., 3</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="small text-secondary">— Ana P., 4</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="small text-secondary">— Ana P., 5</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="small text-secondary">— Ana P., 6</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="small text-secondary">— Ana P., 7</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="small text-secondary">— Ana P., 8</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-4 rounded-2xl carousel-item-modify">
+                                    <img src="/assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
+                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="small text-secondary">— Ana P., 9</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- controles... -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#depoCarouselDesktop"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#depoCarouselDesktop"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bandeiras -->
+    <div class="container">
+        <h1 class="h3 text-center">Aceitamos as principais bandeiras</h1>
+
+        <section>
+            <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 g-2 g-sm-3">
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira01.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira02.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira03.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira04.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira05.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira06.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira07.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira08.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira09.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira10.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira11.svg" alt="..." width="75px"></div>
+                </div>
+                <div class="col">
+                    <div class="logo-box"><img src="/assets/jpi/bandeira12.svg" alt="..." width="75px"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dois cartões -->
+        <section class="mb-4 mt-4">
+            <div class="row g-3">
+                <!-- Refeição e Alimentação -->
+                <div class="col-12 col-md-6">
+                    <div class="accept-card p-3 p-md-4 h-100">
+                        <h3 class="h4 mb-3">Refeição e Alimentação</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="logo-box"><img class="image-group" src="/assets/jpi/imagem-baneiras-vr.png"
+                                        alt="..."></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carteiras Digitais -->
+                <div class="col-12 col-md-6">
+                    <div class="accept-card p-3 p-md-4 h-100">
+                        <h3 class="h4">Carteiras Digitais <span class="mini-hint mb-3">(via QR Code Pix)</span></h3>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="logo-box"><img class="image-group"
+                                        src="/assets/jpi/imagem-baneiras-bancos.png" alt="..."></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="ajuda" class="container jpi-footer">
+        <!-- <div class="container footer-wrap"> -->
+        <div class="row align-items-center footer-wrap">
+            <!-- Col: contatos -->
+            <div class="col-12 col-md-6">
+                <img src="/assets/jpi/logo-jpi.svg" alt="JPI Capital Bank" class="footer-logo d-md-none d-lg-none">
+                <p class="footer-title mb-2">Ajuda ou dúvidas:</p>
+                <ul class="contact-list">
+                    <li>
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                        <a href="https://wa.me/5517997631522" target="_blank" rel="noopener">
+                            (17) <strong>99763-1522</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                        <a href="mailto:suporte@jpicapitalbank.com.br">suporte@jpicapitalbank.com.br</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Col: logo + redes -->
+            <div class="col-12 col-md-6 footer-logo-wrapper">
+                <img src="/assets/jpi/logo-jpi.svg" alt="JPI Capital Bank"
+                    class="footer-logo d-none d-sm-none d-md-block d-lg-block">
+                <div class="social mt-3 ms-0 ms-md-3">
+                    <a href="https://www.instagram.com/jpicapitalbank/" aria-label="Instagram"><i
+                            class="bi bi-instagram"></i></a>
+                    <a href="https://www.youtube.com/jpicapitalbank/" aria-label="YouTube"><i
+                            class="bi bi-youtube"></i></a>
+                    <a href="https://www.linkedin.com/jpicapitalbank" aria-label="LinkedIn"><i
+                            class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </footer>
+
+    <!-- faixa inferior -->
+    <div class="footer-bottom">
+        <div class="container text-center">
+            <div style="font-size:x-small">© <span id="year"></span> JPI Capital Bank. Todos os direitos reservados.
+                CNPJ • Política de Privacidade • Termos de Uso</div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ===== PLanos selecionar opção =====
+        document.addEventListener('DOMContentLoaded', () => {
+            const radios = document.querySelectorAll('input[name="plano"].plan-radio');
+
+            function setActive(selected) {
+                // limpa estados anteriores
+                document.querySelectorAll('.plan.is-selected, .plan-card.is-selected')
+                    .forEach(el => el.classList.remove('is-selected'));
+
+                // acessibilidade: aria-checked
+                radios.forEach(r => r.setAttribute('aria-checked', r === selected ? 'true' : 'false'));
+
+                // marca o box do plano
+                const planBox = selected.closest('.plan');
+                if (planBox) planBox.classList.add('is-selected');
+
+                // marca o card (texto) do mesmo col
+                const col = planBox?.closest('.col-sm-6, .col-md-6');
+                const card = col?.querySelector('.plan-card');
+                if (card) card.classList.add('is-selected');
+
+
+                if (selected.value === 'plano-diario') {
+                    // pega elemento botão maquininhas
+                    const btnMaquininhas = document.querySelectorAll('.btn.btn-brand.w-100.badge-accent.rounded-pill')
+
+                    btnMaquininhas.forEach(function (link, index) {
+                        link.href = 'https://afiliados.jpicapitalbank.com.br/checkout/27f0c4bb-77aa-40c7-a68e-47b17f7fe40e';
+                    });
+
+
+                    // muda valores maquininhas
+                    const priceMaquininha = document.querySelectorAll('.price')
+                    const installmentMaquininha = document.querySelectorAll('.installment')
+
+                    priceMaquininha[0].innerHTML = "R$449,00";
+                    installmentMaquininha[0].innerHTML = "ou 12x de <strong>R$37,42</strong>";
+
+                    priceMaquininha[1].innerHTML = "R$349,00";
+                    installmentMaquininha[1].innerHTML = "ou 12x de <strong>R$29,08</strong>";
+
+                    priceMaquininha[2].innerHTML = "R$199,00";
+                    installmentMaquininha[2].innerHTML = "ou 12x de <strong>R$16,58</strong>";
+
+
+                } else {
+                    const btnMaquininhas = document.querySelectorAll('.btn.btn-brand.w-100.badge-accent.rounded-pill')
+
+                    btnMaquininhas.forEach(function (link, index) {
+                        link.href = 'https://afiliados.jpicapitalbank.com.br/checkout/7bc04102-0600-4130-a813-80cfa61e607b';
+                    });
+
+
+                    // muda valores maquininhas
+                    const priceMaquininha = document.querySelectorAll('.price')
+                    const installmentMaquininha = document.querySelectorAll('.installment')
+
+                    priceMaquininha[0].innerHTML = "R$499,00";
+                    installmentMaquininha[0].innerHTML = "ou 12x de <strong>R$41,58</strong>";
+
+                    priceMaquininha[1].innerHTML = "R$399,00";
+                    installmentMaquininha[1].innerHTML = "ou 12x de <strong>R$33,25</strong>";
+
+                    priceMaquininha[2].innerHTML = "R$249,00";
+                    installmentMaquininha[2].innerHTML = "ou 12x de <strong>R$20,75</strong>";
+
+
+
+                }
+
+            }
+
+            // quando trocar o radio
+            radios.forEach(radio => {
+                radio.addEventListener('change', () => setActive(radio));
+
+                // permitir clicar no bloco inteiro .plan
+                const box = radio.closest('.plan');
+                if (box) {
+                    box.addEventListener('click', (e) => {
+                        if (e.target.tagName.toLowerCase() !== 'input') {
+                            radio.checked = true;
+                            radio.dispatchEvent(new Event('change', { bubbles: true }));
+                        }
+                    });
+                }
+            });
+
+            // estado inicial (se já vier marcado ou seleciona o primeiro)
+            const initial = [...radios].find(r => r.checked) || radios[0];
+            if (initial) {
+                initial.checked = true;
+                setActive(initial);
+            }
+        });
+
+
+        // ===== Tabela / Taxas =====
+        (function () {
+            // dados das tabelas
+            const TAXAS = {
+                economico: [
+                    ["Débito", "1,19%", "1,75%", "1,75%"],
+                    ["Crédito", "3,27%", "4,00%", "4,00%"],
+                    ["2x", "5,89%", "5,89%", "5,89%"],
+                    ["3x", "6,84%", "6,84%", "6,84%"],
+                    ["4x", "7,76%", "7,76%", "7,76%"],
+                    ["5x", "8,68%", "8,68%", "8,68%"],
+                    ["6x", "9,58%", "9,58%", "9,58%"],
+                    ["7x", "10,78%", "10,78%", "10,78%"],
+                    ["8x", "11,65%", "11,65%", "11,65%"],
+                    ["9x", "12,52%", "12,52%", "12,52%"],
+                    ["10x", "13,38%", "13,38%", "13,38%"],
+                    ["11x", "14,23%", "14,23%", "14,23%"],
+                    ["12x", "15,06%", "15,06%", "15,06%"],
+                    ["13x", "15,89%", "15,89%", "15,89%"],
+                    ["14x", "16,70%", "16,70%", "16,70%"],
+                    ["15x", "17,51%", "17,51%", "17,51%"],
+                    ["16x", "18,30%", "18,30%", "18,30%"],
+                    ["17x", "19,09%", "19,09%", "19,09%"],
+                    ["18x", "19,86%", "19,86%", "19,86%"],
+                    ["PIX", "0,50%", "0,50%", "0,50%"],
+                ],
+                diario: [
+                    ["Débito", "1,15%", "1,55%", "1,55%"],
+                    ["Crédito", "2,40%", "2,40%", "2,40%"],
+                    ["2x", "3,00%", "3,25%", "3,25%"],
+                    ["3x", "3,00%", "3,25%", "3,25%"],
+                    ["4x", "3,00%", "3,25%", "3,25%"],
+                    ["5x", "3,00%", "3,25%", "3,25%"],
+                    ["6x", "3,00%", "3,25%", "3,25%"],
+                    ["7x", "3,25%", "3,25%", "3,25%"],
+                    ["8x", "3,25%", "3,25%", "3,25%"],
+                    ["9x", "3,25%", "3,25%", "3,25%"],
+                    ["10x", "3,25%", "3,25%", "3,25%"],
+                    ["11x", "3,25%", "3,25%", "3,25%"],
+                    ["12x", "3,25%", "3,25%", "3,25%"],
+                    ["13x", "3,25%", "3,45%", "3,45%"],
+                    ["14x", "3,25%", "3,45%", "3,45%"],
+                    ["15x", "3,25%", "3,45%", "3,45%"],
+                    ["16x", "3,25%", "3,45%", "3,45%"],
+                    ["17x", "3,25%", "3,45%", "3,45%"],
+                    ["18x", "3,25%", "3,45%", "3,45%"],
+                    ["PIX", "0,50%", "0,50%", "0,50%"],
+                ],
+            };
+
+            function renderTbody(tbody, rows) {
+                tbody.innerHTML = rows.map(r => (
+                    `<tr><th scope="row">${r[0]}</th><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`
+                )).join("");
+            }
+
+            // Preenche desktop/tablet
+            const tbDiario = document.getElementById("rates-diario-body");
+            const tbEcon = document.getElementById("rates-economico-body");
+            if (tbDiario) renderTbody(tbDiario, TAXAS.diario);
+            if (tbEcon) renderTbody(tbEcon, TAXAS.economico);
+
+            // Mobile: tabela dinâmica
+            const mobileTbody = document.getElementById("rates-mobile-body");
+            const mobileRadios = document.querySelectorAll('input[name="ratePlan"]');
+            function setMobile(planKey) {
+                if (!mobileTbody) return;
+                renderTbody(mobileTbody, TAXAS[planKey]);
+            }
+            if (mobileTbody) {
+                // estado inicial
+                const initial = [...mobileRadios].find(r => r.checked)?.value || "diario";
+                setMobile(initial);
+
+                // troca via chips
+                mobileRadios.forEach(r => r.addEventListener("change", () => setMobile(r.value)));
+            }
+
+
+            if (window.matchMedia("(max-width: 767.98px)").matches) {
+                const planRadios = document.querySelectorAll('input[name="plano"].plan-radio');
+                planRadios.forEach(r => {
+                    r.addEventListener("change", () => {
+                        const key = r.id.includes("diario") ? "diario" : "economico";
+                        const chip = document.querySelector(`input[name="ratePlan"][value="${key}"]`);
+                        if (chip) chip.checked = true;
+                        setMobile(key);
+                    });
+                });
+            }
+        })();
+
+        /* ===== Simulação de taxas JPI x Concorrentes ===== */
+        (function () {
+            const elValor = document.getElementById('sim-valor');
+            const elTaxJpi = document.getElementById('sim-taxa-jpi');
+            const elTaxConc = document.getElementById('sim-taxa-conc');
+            const elTipo = document.getElementById('sim-tipo');
+
+            const outJpi = document.getElementById('sim-valor-jpi');
+            const outConc = document.getElementById('sim-valor-conc');
+            const outEco = document.getElementById('sim-eco-chip');
+
+            const fmtBRL = (n) =>
+                new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(n);
+
+            // --- helpers de máscara ---
+            // Campo "valor": armazena sempre em centavos (string só dígitos)
+            const getCentavos = () => {
+                const onlyDigits = (elValor.value || '').replace(/\D+/g, '');
+                return onlyDigits.length ? parseInt(onlyDigits, 10) : 0;
+            };
+            const setCentavos = (cent) => {
+                const val = (cent / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                elValor.value = val.replace(/\./g, '').replace(',', ''); // mantém números para caret estável
+            };
+            // Inicial: o HTML vem com "1000000" (centavos). Formata visualmente.
+            if (/^\d+$/.test(elValor.value)) {
+                const cents = parseInt(elValor.value, 10);
+                elValor.value = (cents / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            // Percentual "1,19" -> 0.0119
+            const parsePercent = (v) => {
+                if (!v) return 0;
+                const txt = String(v).replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, '');
+                const num = parseFloat(txt);
+                return isNaN(num) ? 0 : (num / 100);
+            };
+            const setPercent = (el, p) => {
+                const num = (p * 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                el.value = num;
+            };
+
+            function calcular() {
+                const venda = getCentavos() / 100;          // em reais
+                const taxaJ = parsePercent(elTaxJpi.value); // ex: 0.0119
+                const taxaC = parsePercent(elTaxConc.value);
+
+                const receJ = venda * (1 - taxaJ);
+                const receC = venda * (1 - taxaC);
+                const eco = Math.max(0, receJ - receC);
+
+                outJpi.textContent = fmtBRL(receJ);
+                outConc.textContent = fmtBRL(receC);
+                outEco.textContent = `+ ${eco.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            }
+
+            // Valores referencia calculo
+            elTipo.addEventListener('change', () => {
+                if (elTipo.value === 'debito') {
+                    setPercent(elTaxJpi, 0.0119);
+                    setPercent(elTaxConc, 0.0155);
+                } else if (elTipo.value === 'credito') {
+                    setPercent(elTaxJpi, 0.0240);
+                    setPercent(elTaxConc, 0.0325);
+                } else { // pix
+                    setPercent(elTaxJpi, 0.0050);
+                    setPercent(elTaxConc, 0.0050);
+                }
+                calcular();
+            });
+
+            // Máscara do campo valor (reais)
+            elValor.addEventListener('input', () => {
+                const digits = elValor.value.replace(/\D+/g, '');
+                const cents = digits ? parseInt(digits, 10) : 0;
+                const val = (cents / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                elValor.value = val;
+                calcular();
+            });
+
+            // Normaliza percentuais e recalcula
+            [elTaxJpi, elTaxConc].forEach(el => {
+                el.addEventListener('blur', () => {
+                    const n = parsePercent(el.value);
+                    setPercent(el, n);
+                    calcular();
+                });
+                el.addEventListener('input', calcular);
+            });
+
+            // primeira renderização
+            calcular();
+        })();
+
+    </script>
+</body>
+
+</html>

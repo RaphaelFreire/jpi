@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-7);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-6);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-9 {
+        fill: #00538a;
+      }
+
+      .cls-10 {
+        fill: #fefefe;
+      }
+
+      .cls-11 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-1" d="M10.41,8.22v33.22h26.31c2.66,0,4.81-2.15,4.81-4.81V8.22H10.41Z"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <path class="cls-1" d="M26.33,15.6l4.01,3.97c.33.33.33.86,0,1.18l-4.01,3.96v4.68s8.53-8.38,8.53-8.38c.48-.47.48-1.24,0-1.7l-8.54-8.38v4.68Z"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <path class="cls-1" d="M16.22,19.31c-.48.47-.48,1.24,0,1.7l8.54,8.38v-4.68s-4.01-3.96-4.01-3.96c-.33-.32-.33-.86,0-1.18l4.01-3.97v-4.68l-8.54,8.38Z"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <path class="cls-1" d="M20.16,32.45c-.27,0-.51.17-.6.43l-1.74,5.15h1.19l.39-1.16h2.22l.38,1.16h1.19l-1.89-5.58h-1.13ZM20.5,33.32l.83,2.64h-1.65l.82-2.64Z"/>
+    </clipPath>
+    <clipPath id="clippath-4">
+      <path class="cls-1" d="M23.65,32.45v5.58h2.52c1.09,0,1.64-.49,1.64-1.28v-.6c0-.54-.32-.92-.87-1.03.46-.18.67-.44.67-.9v-.58c0-.76-.46-1.19-1.59-1.19h-2.35ZM24.78,33.32h1.09c.41,0,.6.14.6.45v.49c0,.33-.16.52-.6.52h-1.08v-1.47ZM24.78,35.63h1.26c.45,0,.63.18.63.56v.42c0,.41-.22.54-.73.54h-1.16v-1.52Z"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <path class="cls-1" d="M15.75,32.28c-1.45.02-2.08.6-2.08,1.62v2.51c0,1.01.63,1.6,2.08,1.62h0s1.57,0,1.57,0v-.41c0-.3-.25-.55-.55-.55h-1.02c-.71-.02-.95-.27-.95-.84v-2.14c0-.57.24-.82.95-.84h1.63v-.4c0-.3-.25-.55-.55-.55h-1.08Z"/>
+    </clipPath>
+    <clipPath id="clippath-6">
+      <path class="cls-1" d="M34.44,32.37c-.35,0-.63.28-.63.63v5.03h3.59v-.93h-2.46v-4.73h-.51Z"/>
+    </clipPath>
+    <clipPath id="clippath-7">
+      <path class="cls-1" d="M30.56,32.45c-.37,0-.69.24-.81.58l-1.69,4.99h1.19l.39-1.16h2.22l.38,1.16h1.19l-1.89-5.58h-.97ZM30.73,33.32l.83,2.64h-1.65l.82-2.64Z"/>
+    </clipPath>
+  </defs>
+  <g id="g5492-9">
+    <g class="cls-11">
+      <g id="g5494-1">
+        <path id="path5500-8" class="cls-9" d="M4.64,47.21h42.65V2.46H4.64v44.75Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="g5502-4">
+    <g class="cls-2">
+      <g id="g5504-0">
+        <path id="path5510-3" class="cls-10" d="M20.56,35.16h20.42V5.16h-20.42v30Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="g5512-9">
+    <g class="cls-5">
+      <g id="g5514-9">
+        <path id="path5520-2" class="cls-10" d="M10.09,35.16h20.42V5.16H10.09v30Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="g5522-2">
+    <g class="cls-3">
+      <g id="g5524-7">
+        <path id="path5530-0" class="cls-10" d="M12.05,43.79h16.88v-17.1H12.05v17.1Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="g5532-8">
+    <g class="cls-4">
+      <g id="g5534-9">
+        <path id="path5540-3" class="cls-10" d="M17.89,43.79h15.68v-17.1h-15.68v17.1Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="g5542-6">
+    <g class="cls-8">
+      <g id="g5544-6">
+        <path id="path5550-9" class="cls-10" d="M7.91,43.79h15.24v-17.27H7.91v17.27Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="g5552-1">
+    <g class="cls-7">
+      <g id="g5554-2">
+        <path id="path5560-5" class="cls-10" d="M28.05,43.79h15.12v-17.19h-15.12v17.19Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="g5562-2">
+    <g class="cls-6">
+      <g id="g5564-9">
+        <path id="path5570-1" class="cls-10" d="M22.29,43.79h16.89v-17.1h-16.89v17.1Z"/>
+      </g>
+    </g>
+  </g>
+</svg>
