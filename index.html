@@ -32,6 +32,9 @@
             --brand-dark2: #001e2a;
             --brand-dark3: #143340;
 
+
+            --brand-oppacity: rgba(8, 40, 54, .65);
+
             --gold: #bc955c;
             --accent: #61b400;
 
@@ -190,9 +193,18 @@
             background-color: var(--brand-dark2);
         }
 
+
+        .full-banner>.container {
+            display: flex;
+            min-height: 650px;
+            color: var(--color-negative);
+
+        }
+
         .full-banner>.container {
             display: none;
         }
+
 
         /* =========================================================
    Ícones / Imagens
@@ -690,7 +702,7 @@
         }
 
         .app-hero {
-            border-radius: 16px;
+            border-radius: 32px;
         }
 
         .store-badge img {
@@ -729,13 +741,13 @@
         /* =========================================================
    Carrossel
    ========================================================= */
-        .carousel-inner {
+        .carousel-inner.modify {
             width: 95%;
             margin: auto;
         }
 
-        .carousel-control-next,
-        .carousel-control-prev {
+        .carousel-control-next.modify,
+        .carousel-control-prev.modify {
             width: unset;
         }
 
@@ -944,6 +956,14 @@
 
         /* 320–430px */
         @media (min-width: 320px) and (max-width: 500px) {
+
+            .full-banner>.container {
+                background-color: var(--brand-oppacity);
+                min-height: unset;
+                padding: 15%;
+            }
+
+
             .machine-card img {
                 width: 75px;
                 position: absolute;
@@ -1019,6 +1039,11 @@
 
         /* 510–730px */
         @media (min-width: 500px) and (max-width: 765px) {
+
+            .full-banner>.container {
+                padding: 10%;
+            }
+
             .machine-card img {
                 width: 115px;
                 position: absolute;
@@ -1239,7 +1264,8 @@
                 <img src="assets/jpi/logo-jpi.svg" alt="JPI Capital Bank" class="img-fluid" width="133px"
                     height="33px" />
             </a>
-            <a target="_blank" href="https://www.jpicapitalbank.new.paytime.com.br/" type="button" class="btn btn-brand btn-login rounded-pill">
+            <a target="_blank" href="https://www.jpicapitalbank.new.paytime.com.br/" type="button"
+                class="btn btn-brand btn-login rounded-pill">
                 <i class="bi bi-person-circle"></i> Login
             </a>
             <button class="navbar-toggler btn-navbar" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
@@ -1268,26 +1294,114 @@
         </div>
     </nav>
 
-    <!-- Full-banner -->
-    <section class="full-banner py-5 py-lg-6">
-        <div class="container">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-6">
-                    <span class="badge rounded-pill badge-accent text-dark mb-3">Sem aluguel • Receba por aproximação •
-                        Aceite Pix</span>
-                    <h1 class="display-5 fw-bold mb-3">Escolha sua Maquininha!</h1>
-                    <p class="lead">
-                        Com a JPI Capital Bank você tem taxas claras, comprovante por SMS
-                        ou impresso, chip 4G grátis, e conta digital completa para
-                        gerenciar suas vendas.
-                    </p>
-                    <div class="d-flex gap-2 mt-3">
-                        <a href="#maquininhas" class="btn btn-brand btn-lg"><i class="bi bi-bag"></i> Ver opções</a>
-                    </div>
+    <!-- Onde o banner/carrossel será injetado -->
+    <div id="hero"></div>
+
+    <!-- Seus slides em JSON -->
+    <script type="application/json" id="hero-data">
+    [
+      {
+        "bg": "assets/jpi/banner-full.jpg",
+        "badge": "Sem aluguel",
+        "title": "Escolha sua Maquininha!",
+        "lead": "Com a JPI Capital Bank você tem taxas claras, comprovante por SMS ou impresso.",
+        "cta": { "href": "#maquininhas", "icon": "bi-bag", "label": "Ver opções" }
+      }
+    ]
+    </script>
+
+    <script>
+        (function () {
+            const root = document.getElementById('hero');
+            const dataScript = document.getElementById('hero-data');
+            let slides = [];
+            try { slides = JSON.parse(dataScript?.textContent || '[]').filter(Boolean); } catch (_) { }
+
+            if (!root) return;
+
+            const esc = s => String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+            function btnCTA(cta) {
+                if (!cta) return '';
+                const icon = cta.icon ? `<i class="bi ${esc(cta.icon)}"></i> ` : '';
+                return `
+              <div class="d-flex gap-2 mt-3">
+                <a href="${esc(cta.href || '#')}" class="btn btn-brand btn-lg">
+                  ${icon}${esc(cta.label || 'Saiba mais')}
+                </a>
+              </div>`;
+            }
+
+            function badgeEl(text) {
+                return text ? `<span class="badge rounded-pill badge-accent text-dark mb-3">${esc(text)}</span>` : '';
+            }
+
+            function renderFull(slide) {
+                return `
+            <section class="full-banner" style="background-image: url('${esc(slide.bg)}')">
+              <div class="container">
+                <div class="row align-items-center g-4">
+                  <div class="col-lg-6">
+                    ${badgeEl(slide.badge)}
+                    <h1 class="display-5 fw-bold mb-3">${esc(slide.title || '')}</h1>
+                    ${slide.lead ? `<p class="lead">${esc(slide.lead)}</p>` : ''}
+                    ${btnCTA(slide.cta)}
+                  </div>
                 </div>
-            </div>
-        </div>
-    </section>
+              </div>
+            </section>`;
+            }
+
+            function renderCarousel(items) {
+                const indicators = items.map((_, i) =>
+                    `<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="${i}" ${i === 0 ? 'class="active" aria-current="true"' : ''} aria-label="Slide ${i + 1}"></button>`
+                ).join('');
+
+                const slidesHtml = items.map((s, i) => `
+              <div class="carousel-item ${i === 0 ? 'active ' : ''}full-banner" style="background-image: url('${esc(s.bg)}')">
+                <div class="container">
+                  <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                      ${badgeEl(s.badge)}
+                      ${i === 0 ? `<h1 class="display-5 fw-bold mb-3">${esc(s.title || '')}</h1>`
+                        : `<h2 class="fw-bold mb-3">${esc(s.title || '')}</h2>`}
+                      ${s.lead ? `<p class="lead">${esc(s.lead)}</p>` : ''}
+                      ${btnCTA(s.cta)}
+                    </div>
+                    <div class="col-lg-6 d-none d-lg-block"></div>
+                  </div>
+                </div>
+              </div>
+            `).join('');
+
+                return `
+            <section>
+              <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="7000"
+                   data-bs-touch="true" data-bs-pause="hover" aria-label="Destaques">
+                <div class="carousel-indicators">${indicators}</div>
+                <div class="carousel-inner">${slidesHtml}</div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Anterior">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Próximo">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+            </section>`;
+            }
+
+            // Decide e renderiza
+            if (slides.length === 1) {
+                root.innerHTML = renderFull(slides[0]);
+            } else if (slides.length > 1) {
+                root.innerHTML = renderCarousel(slides);
+            } else {
+                root.innerHTML = ''; // opcional: placeholder
+            }
+        })();
+    </script>
+
+
 
     <!-- Planos -->
     <section id="planos" class="plans">
@@ -1708,8 +1822,7 @@
                         </div>
                         <div class="col">
                             <div class="p-4 rounded cards-itens">
-                                <img src="assets/jpi/10.svg" alt="POS com chip 4G + Wi-Fi" width="40px"
-                                    height="40px" />
+                                <img src="assets/jpi/10.svg" alt="POS com chip 4G + Wi-Fi" width="40px" height="40px" />
                                 <span>POS com chip 4G + Wi-Fi</span>
                             </div>
                         </div>
@@ -1758,7 +1871,8 @@
                         <li><strong>Autenticação segura</strong></li>
                     </ul>
 
-                    <a target="_blank" href="https://www.jpicapitalbank.new.paytime.com.br/" class="btn btn-accent rounded-pill px-4 py-2">
+                    <a target="_blank" href="https://www.jpicapitalbank.new.paytime.com.br/"
+                        class="btn btn-accent rounded-pill px-4 py-2">
                         Abrir conta Gratuita
                     </a>
                 </div>
@@ -1819,61 +1933,22 @@
     </section>
 
     <!-- Depoimentos -->
-    <section class="py-5">
+    <section class="py-5" id="sec-depoimentos">
         <div class="container">
             <h2 class="mb-4 text-center">Depoimentos de quem confia</h2>
 
             <!-- Mobile: 1 por slide -->
-            <div id="depoCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="p-4 rounded-2xl carousel-item-modify">
-                            <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                            <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s.</p>
-                            <div class="small text-secondary">— Ana P., MEI</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="p-4 rounded-2xl carousel-item-modify">
-                            <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                            <p class="mb-1">“is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s.”</p>
-                            <div class="small text-secondary">— Carlos M., lojista</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="p-4 rounded-2xl carousel-item-modify">
-                            <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                            <p class="mb-1">“is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s.”</p>
-                            <div class="small text-secondary">— Raphael M., lojista</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="p-4 rounded-2xl carousel-item-modify">
-                            <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                            <p class="mb-1">“is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s.”</p>
-                            <div class="small text-secondary">— Carlos M., lojista</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="p-4 rounded-2xl carousel-item-modify">
-                            <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                            <p class="mb-1">“is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s.”</p>
-                            <div class="small text-secondary">— Raphael M., lojista</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- controles... -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#depoCarouselMobile"
+            <div id="depoCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel"
+                aria-label="Carrossel de depoimentos (mobile)">
+                <div class="carousel-inner modify"></div>
+
+                <!-- controles -->
+                <button class="carousel-control-prev modify" type="button" data-bs-target="#depoCarouselMobile"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Anterior</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#depoCarouselMobile"
+                <button class="carousel-control-next modify" type="button" data-bs-target="#depoCarouselMobile"
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Próximo</span>
@@ -1881,109 +1956,116 @@
             </div>
 
             <!-- Desktop: 3 por slide -->
-            <div id="depoCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row g-4">
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry.
-                                        Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                    <div class="small text-secondary">— Ana P., 1</div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                    <div class="small text-secondary">— Ana P., 2</div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.”</p>
-                                    <div class="small text-secondary">— Ana P., 3</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row g-4">
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                    <div class="small text-secondary">— Ana P., 4</div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                    <div class="small text-secondary">— Ana P., 5</div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                    <div class="small text-secondary">— Ana P., 6</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row g-4">
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                    <div class="small text-secondary">— Ana P., 7</div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                    <div class="small text-secondary">— Ana P., 8</div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="p-4 rounded-2xl carousel-item-modify">
-                                    <img src="assets/jpi/imagem-depoimento.png" alt="Imagem depoimento" />
-                                    <p class="mb-1">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                    <div class="small text-secondary">— Ana P., 9</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- controles... -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#depoCarouselDesktop"
+            <div id="depoCarouselDesktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel"
+                aria-label="Carrossel de depoimentos (desktop)">
+                <div class="carousel-inner modify"></div>
+
+                <!-- controles -->
+                <button class="carousel-control-prev modify" type="button" data-bs-target="#depoCarouselDesktop"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Anterior</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#depoCarouselDesktop"
+                <button class="carousel-control-next modify" type="button" data-bs-target="#depoCarouselDesktop"
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Próximo</span>
                 </button>
             </div>
-
         </div>
     </section>
+
+    <script>
+        // ---------- FONTE ÚNICA DE DADOS ----------
+        // Você pode popular isso via CMS, fetch, etc.
+        const depoimentos = [
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Raphael Freire", texto: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", autor: "Raphael Freire" },
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Ellen Rossi", texto: "“is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.”", autor: "Ellen Rossi" },
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Sandra Cristina", texto: "“is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.”", autor: "Sandra Cristina" },
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Cliente 4", texto: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", autor: "— Ana P., 4" },
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Cliente 5", texto: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", autor: "— Ana P., 5" },
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Cliente 6", texto: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", autor: "— Ana P., 6" },
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Cliente 7", texto: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", autor: "— Ana P., 7" },
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Cliente 8", texto: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", autor: "— Ana P., 8" },
+            { img: "assets/jpi/imagem-depoimento.png", alt: "Cliente 9", texto: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", autor: "— Ana P., 9" },
+        ];
+
+        // ---------- HELPERS ----------
+        const escapeHtml = (s = '') =>
+            String(s).replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+
+        const chunk = (arr, size) => {
+            const out = [];
+            for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+            return out;
+        };
+
+        const cardHTML = (t) => `
+      <div class="p-4 rounded-2xl carousel-item-modify">
+        <img src="${escapeHtml(t.img)}" alt="${escapeHtml(t.alt || 'Imagem depoimento')}" loading="lazy" />
+        <p class="mb-1">${escapeHtml(t.texto)}</p>
+        <div class="small text-secondary">${escapeHtml(t.autor)}</div>
+      </div>
+    `;
+
+        const toggleControls = (rootId, slideCount) => {
+            const ctrls = document.querySelectorAll(`#${rootId} .carousel-control-prev, #${rootId} .carousel-control-next`);
+            ctrls.forEach(el => el.style.display = slideCount > 1 ? "" : "none");
+        };
+
+        // ---------- BUILD: MOBILE (1 por slide) ----------
+        const buildMobile = (data) => {
+            const inner = document.querySelector("#depoCarouselMobile .carousel-inner");
+            if (!inner) return;
+            inner.innerHTML = "";
+            data.forEach((t, i) => {
+                const item = document.createElement("div");
+                item.className = "carousel-item" + (i === 0 ? " active" : "");
+                item.innerHTML = cardHTML(t);
+                inner.appendChild(item);
+            });
+            toggleControls("depoCarouselMobile", Math.max(1, data.length));
+        };
+
+        // ---------- BUILD: DESKTOP (3 por slide) ----------
+        const buildDesktop = (data) => {
+            const inner = document.querySelector("#depoCarouselDesktop .carousel-inner");
+            if (!inner) return;
+            inner.innerHTML = "";
+            const grupos = chunk(data, 3);
+            grupos.forEach((grupo, i) => {
+                const item = document.createElement("div");
+                item.className = "carousel-item" + (i === 0 ? " active" : "");
+
+                const row = document.createElement("div");
+                row.className = "row g-4";
+
+                grupo.forEach((t) => {
+                    const col = document.createElement("div");
+                    col.className = "col-12 col-md-4";
+                    col.innerHTML = cardHTML(t);
+                    row.appendChild(col);
+                });
+
+                item.appendChild(row);
+                inner.appendChild(item);
+            });
+            toggleControls("depoCarouselDesktop", Math.max(1, grupos.length));
+        };
+
+        // ---------- INIT ----------
+        document.addEventListener("DOMContentLoaded", () => {
+            // Se não houver dados, esconde a seção inteira
+            if (!Array.isArray(depoimentos) || depoimentos.length === 0) {
+                const sec = document.getElementById("sec-depoimentos");
+                if (sec) sec.style.display = "none";
+                return;
+            }
+            buildMobile(depoimentos);
+            buildDesktop(depoimentos);
+        });
+    </script>
+
 
     <!-- Bandeiras -->
     <div class="container">
@@ -2148,14 +2230,14 @@
                     const priceMaquininha = document.querySelectorAll('.price')
                     const installmentMaquininha = document.querySelectorAll('.installment')
 
-                    priceMaquininha[0].innerHTML = "R$449,00";
-                    installmentMaquininha[0].innerHTML = "ou 12x de <strong>R$37,42</strong>";
+                    priceMaquininha[0].innerHTML = "R$549,00";
+                    installmentMaquininha[0].innerHTML = "ou 12x de <strong>R$45,75</strong>";
 
-                    priceMaquininha[1].innerHTML = "R$349,00";
-                    installmentMaquininha[1].innerHTML = "ou 12x de <strong>R$29,08</strong>";
+                    priceMaquininha[1].innerHTML = "R$449,00";
+                    installmentMaquininha[1].innerHTML = "ou 12x de <strong>R$37,42</strong>";
 
-                    priceMaquininha[2].innerHTML = "R$199,00";
-                    installmentMaquininha[2].innerHTML = "ou 12x de <strong>R$16,58</strong>";
+                    priceMaquininha[2].innerHTML = "R$299,00";
+                    installmentMaquininha[2].innerHTML = "ou 12x de <strong>R$24,92</strong>";
 
 
                 } else {
@@ -2170,14 +2252,14 @@
                     const priceMaquininha = document.querySelectorAll('.price')
                     const installmentMaquininha = document.querySelectorAll('.installment')
 
-                    priceMaquininha[0].innerHTML = "R$499,00";
-                    installmentMaquininha[0].innerHTML = "ou 12x de <strong>R$41,58</strong>";
+                    priceMaquininha[0].innerHTML = "R$599,00";
+                    installmentMaquininha[0].innerHTML = "ou 12x de <strong>R$49,92</strong>";
 
-                    priceMaquininha[1].innerHTML = "R$399,00";
-                    installmentMaquininha[1].innerHTML = "ou 12x de <strong>R$33,25</strong>";
+                    priceMaquininha[1].innerHTML = "R$499,00";
+                    installmentMaquininha[1].innerHTML = "ou 12x de <strong>R$41,58</strong>";
 
-                    priceMaquininha[2].innerHTML = "R$249,00";
-                    installmentMaquininha[2].innerHTML = "ou 12x de <strong>R$20,75</strong>";
+                    priceMaquininha[2].innerHTML = "R$349,00";
+                    installmentMaquininha[2].innerHTML = "ou 12x de <strong>R$29,08</strong>";
 
 
 
