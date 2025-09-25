@@ -9,6 +9,11 @@
     <meta name="description"
         content="Escolha sua maquininha JPI, veja taxas claras, simule suas vendas e abra sua conta digital gratuita." />
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap Icons -->
@@ -179,6 +184,11 @@
         /* .navbar-body :nth-child(2) {
             order: 1;
         } */
+
+        .navbar-collapse {
+            visibility: unset !important;
+        }
+
 
         /* =========================================================
    Hero / Banner
@@ -784,6 +794,8 @@
 
         .logo-box {
             text-align: center;
+            display: flex;
+            justify-content: center;
         }
 
         .accept-card {
@@ -804,8 +816,9 @@
    Footer (Ajuda)
    ========================================================= */
         .jpi-footer {
-            background: var(--surface);
+            background: var(--brand-dark2);
             border-top: 1px solid var(--border-subtle);
+            color: var(--neutral-2);
         }
 
         .jpi-footer .footer-wrap {
@@ -814,15 +827,15 @@
 
         .jpi-footer .footer-title {
             font-weight: 800;
-            color: var(--brand);
+            /* color: var(--brand); */
             margin: 0 0 .75rem 0;
             font-size: clamp(1.05rem, 1.2vw + .6rem, 1.25rem);
-            padding-left: 3rem;
+            padding-left: 6rem;
         }
 
         .jpi-footer .contact-list {
             list-style: none;
-            padding: 0 0 0 3rem;
+            padding: 0 0 0 6rem;
             margin: 0;
         }
 
@@ -831,14 +844,14 @@
             align-items: center;
             gap: .6rem;
             font-size: clamp(1rem, .9vw + .7rem, 1.25rem);
-            color: var(--brand-dark3);
+            /* color: var(--brand-dark3); */
             line-height: 1.3;
             margin-bottom: .5rem;
         }
 
         .jpi-footer .contact-list i {
             font-size: 1.45rem;
-            color: var(--brand);
+            /* color: var(--brand); */
         }
 
         .jpi-footer .contact-list a {
@@ -933,6 +946,7 @@
             .jpi-footer .footer-logo {
                 height: 46px;
                 margin-bottom: .75rem;
+                margin: auto;
             }
 
             .jpi-footer .footer-title {
@@ -2145,50 +2159,1149 @@
 
     </div>
 
-    <!-- Footer -->
-    <footer id="ajuda" class="container jpi-footer">
-        <!-- <div class="container footer-wrap"> -->
-        <div class="row align-items-center footer-wrap">
-            <!-- Col: contatos -->
-            <div class="col-12 col-md-6">
-                <img src="assets/jpi/logo-jpi.svg" alt="JPI Capital Bank" class="footer-logo d-md-none d-lg-none">
-                <p class="footer-title mb-2">Ajuda ou dúvidas:</p>
-                <ul class="contact-list">
-                    <li>
-                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
-                        <a href="https://wa.me/5517997631522" target="_blank" rel="noopener">
-                            (17) <strong>99763-1522</strong>
-                        </a>
-                    </li>
-                    <li>
-                        <i class="bi bi-envelope" aria-hidden="true"></i>
-                        <a href="mailto:suporte@jpicapitalbank.com.br">suporte@jpicapitalbank.com.br</a>
-                    </li>
-                </ul>
-            </div>
 
-            <!-- Col: logo + redes -->
-            <div class="col-12 col-md-6 footer-logo-wrapper">
-                <img src="assets/jpi/logo-jpi.svg" alt="JPI Capital Bank"
-                    class="footer-logo d-none d-sm-none d-md-block d-lg-block">
-                <div class="social mt-3 ms-0 ms-md-3">
-                    <a href="https://www.instagram.com/jpicapitalbank/" aria-label="Instagram"><i
-                            class="bi bi-instagram"></i></a>
-                    <a href="https://www.youtube.com/jpicapitalbank/" aria-label="YouTube"><i
-                            class="bi bi-youtube"></i></a>
-                    <a href="https://www.linkedin.com/jpicapitalbank" aria-label="LinkedIn"><i
-                            class="bi bi-linkedin"></i></a>
+    <!--FAQ-->
+
+    <style>
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content-inner {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 2000px;
+        }
+
+        .accordion-item.active .accordion-header svg {
+            transform: rotate(180deg);
+        }
+
+        .nested-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .nested-accordion-item.active .nested-accordion-content {
+            max-height: 2000px;
+        }
+
+        .nested-accordion-item.active .nested-accordion-header svg {
+            transform: rotate(180deg);
+        }
+
+        .wrap-accordion{
+            background-color: var(--brand);
+        }
+
+        .accordion-title{
+            color: var(--gold);
+        }
+
+        .accordion-item{
+            background-color: var(--brand-dark) !important;
+        }
+
+        .nested-accordion-item{
+            background-color: var(--brand); 
+        }
+
+        .accordion-header > svg {
+            color: var(--gold);
+        }
+
+        .nested-accordion-header h3 {
+            color: var(--gold);
+        }
+        
+        .accordion-svg{
+            color: var(--gold);
+        }
+
+        
+
+    </style>
+
+
+    <section class="wrap-accordion">
+        <div class="container mx-auto px-4 py-12">
+            <div class="text-center mb-12">
+                <h1 class="accordion-title text-3xl md:text-4xl font-bold mb-4">Dúvidas Frequentes</h1>
+                <p class="text-white">Encontre respostas para as principais perguntas sobre nossos produtos e serviços
+                </p>
+            </div>
+    
+            <!-- Dúvidas Iniciais -->
+            <div class="accordion-item bg-white rounded-lg shadow-md mb-6 overflow-hidden" data-aos="fade-up">
+                <div class="accordion-header flex justify-between items-center p-6 cursor-pointer">
+                    <h2 class="font-semibold text-white">Dúvidas iniciais</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="transition-transform duration-300 accordion-svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <!-- Nested Accordion 1 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">O que é preciso para ter uma maquininha JPI?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p class="mb-4">Para começar a vender com a JPI Capital Bank, siga o processo:</p>
+                                    <ol class="list-decimal space-y-2">
+                                        <li><strong>Escolha seu equipamento:</strong>
+                                            <ul class="list-disc mt-2 space-y-1">
+                                                <li><strong>JPI MPOS</strong> – opção compacta para quem precisa de
+                                                    mobilidade e baixo custo.</li>
+                                                <li><strong>JPI POS</strong> – ideal para negócios que buscam robustez e
+                                                    confiabilidade.</li>
+                                                <li><strong>JPI Smart POS</strong> – versão completa, com sistema Android e
+                                                    funcionalidades avançadas.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Selecione seu plano de recebimento:</strong>
+                                            <ul class="list-disc mt-2 space-y-1">
+                                                <li><strong>Plano Antecipado (D+1)</strong> – todas as vendas recebidas em 1
+                                                    dia útil, já com taxa antecipada.</li>
+                                                <li><strong>Plano Parcelado</strong> – recebimento conforme as parcelas do
+                                                    cliente, com taxa reduzida.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Cadastre-se no portal JPI (via Paytime) e aguarde análise KYC.</li>
+                                        <li>Aprovado o cadastro, sua conta digital JPI é liberada e sua máquina segue para
+                                            entrega.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 2 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Existe mensalidade ou aluguel?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p><strong>Não.</strong> Na JPI Capital Bank, não cobramos mensalidade nem aluguel pela
+                                        maquininha.</p>
+                                    <p class="mt-2">O que existe é a taxa de adesão do plano, que cobre custos iniciais de
+                                        ativação e está claramente descrita no Termo de Uso.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 3 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">As taxas já são antecipadas?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Depende do plano escolhido:</p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li><strong>Plano Diário:</strong>todas as vendas (débito e crédito) são liquidadas
+                                            em 1 dia útil na sua conta JPI.</li>
+                                        <li><strong>Plano Econômico:</strong> o lojista recebe de acordo com a quantidade de
+                                            parcelas escolhidas pelo cliente, com menor custo financeiro.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 4 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">As taxas podem sofrer alteração?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Sim, mas com regras claras:</p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>As taxas <strong>não mudam a todo momento.</strong></li>
+                                        <li>A atualização só ocorre em função de cenários macroeconômicos, geralmente
+                                            baseados na <strong>taxa Selic</strong>.
+                                        </li>
+                                        <li>Se houver alteração, o cliente é <strong>informado com antecedência de alguns
+                                                dias, garantindo transparência e tempo para ajustes</strong>.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 5 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Existe limite de vendas no plano de taxas?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Não há limite de vendas.Você pode vender <strong>quanto quiser</strong>, sem teto de
+                                        faturamento e sem restrição de volume.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 6 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Em quanto tempo recebo minha maquininha?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Após a aprovação da sua conta digital e confirmação do cadastro, o prazo de entrega
+                                        é:
+                                    </p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li><strong>Sudeste, Sul e Centro-Oeste:</strong> de 2 a 15 dias úteis.</li>
+                                        <li><strong>Nordeste e Norte:</strong> de 5 a 20 dias úteis.</li>
+                                    </ul>
+                                    <p>A entrega é feita pela logística oficial do PagBank.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 7 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Qual a garantia da maquininha?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Todas as máquinas JPI (MPOS, POS e Smart POS) <strong>têm garantia de
+                                            fábrica</strong>. Se apresentar defeito, o lojista é orientado pelo nosso
+                                        suporte e poderá receber substituição ou reparo sem custo adicional.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 8 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">É possível aceitar vale-refeição ou alimentação na
+                                    maquininha?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Sim, desde que a conta esteja em nome de <strong>CNPJ do segmento de
+                                            alimentação</strong>.
+                                        Bandeiras aceitas: <strong>Alelo, Sodexo, Ticket e VR Benefícios</strong>, sujeitas
+                                        à habilitação.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 9 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">A maquininha aceita transações em até 18x?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        Sim. No crédito, é possível parcelar em até <strong>18 vezes</strong>. O lojista
+                                        decide se repassa ou não os juros ao cliente.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 10 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">A JPI Capital Bank possui link de pagamento?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        Sim. Além das vendas presenciais, você pode vender online:
+                                    </p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Pelo <strong>app JPI Capital Bank (via Paytime);</strong></li>
+                                        <li>Pelo <strong>app PagBank</strong>, integrado ao plano escolhido.</li>
+                                    </ul>
+                                    <p>
+                                        O cliente recebe o link por WhatsApp, SMS ou e-mail e paga via <strong>cartão, Pix
+                                            ou boleto</strong>. A liquidação segue as regras do seu plano de recebimento.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Pagamentos e Vendas -->
+            <div class="accordion-item bg-white rounded-lg shadow-md mb-6 overflow-hidden" data-aos="fade-up">
+                <div class="accordion-header flex justify-between items-center p-6 cursor-pointer">
+                    <h2 class="font-semibold text-white">Pagamentos e Vendas</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="transition-transform duration-300 accordion-svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+    
+                        <!-- Nested Accordion 1 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Qual o valor mínimo de parcela?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>O valor mínimo de cada parcela em nossas maquininhas é de R$ 5,00.</p>
+                                    <p class="mt-2">Essa regra existe para evitar transações de valor muito baixo que não
+                                        compensam as taxas do sistema financeiro.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 2 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">É possível aceitar vouchers e tickets
+                                    alimentação/refeição?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p><strong>Sim.</strong> Clientes com CNPJ do segmento de alimentação podem habilitar:
+                                    </p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Alelo</li>
+                                        <li>Sodexo</li>
+                                        <li>Ticket</li>
+                                        <li>VR Benefícios</li>
+                                    </ul>
+                                    <p class="mt-2">Essa habilitação depende de aprovação das bandeiras e pode variar
+                                        conforme o ramo de atividade do estabelecimento.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 3 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Quais bandeiras a JPI Capital Bank aceita?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Nossas maquininhas já vêm habilitadas para receber os principais cartões:</p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li><strong>Crédito e débito:</strong> Mastercard, Visa, Elo, Cabal e Mais!</li>
+                                        <li><strong>Crédito:</strong> Hipercard, Hiper.</li>
+                                        <li><strong>Débito:</strong> Banricompras, Débito Mastercard.</li>
+                                        <li><strong>Benefícios (para alimentação):</strong> Alelo, Sodexo, Ticket e VR
+                                            Benefícios.</li>
+                                    </ul>
+                                    <p class="mt-2">Observação: novas bandeiras podem ser adicionadas conforme parceria com
+                                        a rede adquirente.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 4 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">O que fazer se minha venda for negada pela POS?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Se a transação for negada, recomendamos verificar:</p>
+                                    <ol class="list-disc mt-2 space-y-1">
+                                        <li><strong>Saldo disponível</strong> no cartão do cliente.</li>
+                                        <li><strong>Bandeira:</strong> se é aceita na JPI Capital Bank.</li>
+                                        <li><strong>Conexão da maquininha</strong> (chip ou Wi-Fi).</li>
+                                        <li><strong>Senha incorreta</strong> digitada pelo cliente.</li>
+                                        <li><strong>Bloqueio de segurança</strong> (casos de suspeita de fraude).</li>
+                                    </ol>
+                                    <p class="mt-2">Se o problema persistir, nossa equipe de suporte deve ser acionada
+                                        imediatamente.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 5 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Posso parcelar em até 18 vezes?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Sim.
+                                        Nas maquininhas JPI, é possível parcelar no crédito em até <strong>18x</strong>.
+                                        O lojista pode escolher se repassa ou não os juros ao cliente.
+                                        <strong>Importante:</strong> o custo financeiro das parcelas aumenta conforme o
+                                        número de vezes escolhido.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 6 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">As maquininhas JPI permitem recarga de celular?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Atualmente, nossas POS oferecem serviço de recarga de celular.
+                                        Nosso foco é atender todos serviços para <strong>pagamentos de vendas</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 7 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Posso fazer a portabilidade do meu banco para a conta
+                                    JPI Capital Bank?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        Sim.
+                                        Se você já possui vendas recebidas em outro banco, pode solicitar a portabilidade
+                                        para a conta digital da JPI Capital Bank.
+                                        Dessa forma, todos os recebimentos caem diretamente em sua conta JPI, sem
+                                        burocracia.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 8 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">A JPI oferece autofinanciamento da maquininha?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        Não.
+                                        A JPI Capital Bank não trabalha com autofinanciamento.
+                                        Nossas maquininhas têm <strong>adesão única do plano</strong> e ficam em definitivo
+                                        com o cliente.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 9 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Como funciona a habilitação do Pix QR Code?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        A conta digital JPI já vem habilitada para Pix.
+                                    </p>
+    
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Você pode <strong>receber via Pix QR Code dinâmico</strong> gerado pelo app.
+                                        </li>
+                                        <li>Pode também copiar e compartilhar o <strong>Pix Copia e Cola.</strong></li>
+                                        <li>O recebimento é imediato, direto na sua conta digital JPI.</li>
+                                        <li>Criar chave pix para realizar as funcionalidades acima.</li>
+                                    </ul>
+    
+                                    <p>
+                                        <strong>Diferencial:</strong> com o Pix integrado, seu cliente tem mais opções de
+                                        pagamento e você liquida de forma instantânea.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 9 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Como funciona a habilitação do Pix QR Code?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        A conta digital JPI já vem habilitada para Pix.
+                                    </p>
+    
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Você pode <strong>receber via Pix QR Code dinâmico</strong> gerado pelo app.
+                                        </li>
+                                        <li>Pode também copiar e compartilhar o <strong>Pix Copia e Cola.</strong></li>
+                                        <li>O recebimento é imediato, direto na sua conta digital JPI.</li>
+                                        <li>Criar chave pix para realizar as funcionalidades acima.</li>
+                                    </ul>
+    
+                                    <p>
+                                        <strong>Diferencial:</strong> com o Pix integrado, seu cliente tem mais opções de
+                                        pagamento e você liquida de forma instantânea.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion-item bg-white rounded-lg shadow-md mb-6 overflow-hidden" data-aos="fade-up">
+                <div class="accordion-header flex justify-between items-center p-6 cursor-pointer">
+                    <h2 class="font-semibold text-white">Prazos de entregas e acompanhamentos</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="transition-transform duration-300 accordion-svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <!-- Nested Accordion 1 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Qual o prazo de entrega da minha maquininha?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Após a aprovação da sua conta, o envio da maquininha é realizado conforme a região:
+                                    </p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li><strong>Sudeste, Sul e Centro-Oeste:</strong> 2 a 15 dias úteis.</li>
+                                        <li><strong>Nordeste e Norte:</strong> 5 a 20 dias úteis.</li>
+                                    </ul>
+                                    <p class="mt-2">O prazo começa a contar a partir da confirmação da aprovação cadastral e
+                                        pode variar de acordo com a transportadora e eventuais fatores logísticos.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 2 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Como acompanho a entrega da minha maquininha?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Assim que sua maquininha for despachada, a JPI Capital Bank enviará o código de
+                                        rastreio diretamente pelo WhatsApp cadastrado.
+                                    </p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Você poderá acompanhar em tempo real o andamento da entrega.
+                                        </li>
+                                        <li>Caso tenha dúvidas sobre o status, entre em contato com o <strong>suporte via
+                                                WhatsApp ou pelo Portal JPI.</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 3 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Quem faz a entrega da minha maquininha?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Em algumas regiões, a logística é realizada diretamente pela PagBank, nossa parceira
+                                        de operação.</p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>O cliente receberá normalmente a maquininha vinculada à JPI Capital Bank.</li>
+                                        <li>Isso não altera em nada o funcionamento do seu plano, taxas ou suporte.</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 4 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">E se a entrega atrasar?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Em caso de atraso além do prazo estimado:</p>
+                                    <ol class="list-disc mt-2 space-y-1">
+                                        <li>Verifique o status do rastreio enviado.
+                                        </li>
+                                        <li>Entre em contato com o nosso suporte para que possamos abrir uma ocorrência
+                                            junto à transportadora ou à logística da PagBank.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 5 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Comprei JPI, mas recebi PagBank. Está correto?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Entendemos sua dúvida!</p>
+                                    <p>Sim, está correto. As maquininhas utilizadas pela <strong>JPI Capital Bank</strong>
+                                        são fornecidas em parceria com o <strong>PagBank/PagSeguro</strong>, garantindo a
+                                        você a mesma tecnologia, segurança e confiabilidade já reconhecidas no mercado.
+                                    </p>
+                                    <p>
+                                        Isso significa que você terá acesso a equipamentos modernos e de alta qualidade do
+                                        PagBank, mas com <strong>as vantagens exclusivas, planos diferenciados e suporte
+                                            especializado da JPI Capital Bank</strong>.
+                                    </p>
+                                    <p>
+                                        Essa parceria está prevista no contrato aceito no momento da adesão. Nele, fica
+                                        claro que podemos disponibilizar maquininhas de empresas parceiras, como o PagBank.
+                                        (Cláusula 10ª.)
+                                    </p>
+                                    <p>
+                                        Nosso compromisso é com a sua satisfação! Por isso, garantimos:
+                                    </p>
+    
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Maquininhas em perfeito estado de funcionamento;</li>
+                                        <li>Suporte técnico direto da JPI;</li>
+                                        <li>Troca ou manutenção do equipamento quando necessário.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion-item bg-white rounded-lg shadow-md mb-6 overflow-hidden" data-aos="fade-up">
+                <div class="accordion-header flex justify-between items-center p-6 cursor-pointer">
+                    <h2 class="font-semibold text-white">Instruções sobre POS</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="transition-transform duration-300 accordion-svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <!-- Nested Accordion 1 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Como solicito mais bobinas?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Caso precise de bobinas extras para sua JPI POS ou JPI Smart POS, entre em contato
+                                        com nosso <strong>suporte via WhatsApp ou chamado no Portal JPI.</strong>
+                                    </p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Recomendamos solicitar com antecedência para não interromper suas vendas.</li>
+                                        <li>Armazene as bobinas em local seco e arejado para evitar danos.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 2 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">O chip da maquininha não está funcionando. O que
+                                    fazer?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Se o chip apresentar falhas de conexão:
+                                    </p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Confira se há cobertura de sinal na sua região.</li>
+                                        <li>Reinicie a maquininha e aguarde alguns segundos.</li>
+                                        <li>Se necessário, alterne para conexão Wi-Fi.</li>
+                                        <li>Se mesmo assim não funcionar, entre em contato com o suporte JPI Capital Bank.
+                                        </li>
+                                    </ul>
+                                    <p>Caso seja detectado defeito físico no chip ou no equipamento, nossa equipe orientará
+                                        o procedimento de troca.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 3 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">O que fazer em caso de furto ou roubo da maquininha?
+                                </h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>
+                                            Registre um <strong>boletim de ocorrência</strong> imediatamente.</li>
+                                        <li>
+                                            Informe a JPI Capital Bank através do <strong>WhatsApp de suporte ou chamado no
+                                                Portal JPI</strong>.
+                                        </li>
+                                        <li>
+                                            Nosso time irá bloquear o equipamento e orientar sobre o processo para aquisição
+                                            de uma nova máquina.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 4 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Manutenção e troca de máquinas</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>A JPI Capital Bank oferece <strong>suporte técnico, manutenção e troca de
+                                            equipamentos</strong> em caso de defeito ou necessidade de reparo.</p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>O lojista deve acionar o <strong>suporte via WhatsApp ou pelo Portal
+                                                JPI.</strong></li>
+                                        <li>Nossa equipe avaliará o problema e, se confirmado defeito, será providenciada a
+                                            substituição ou manutenção da POS.
+                                        </li>
+                                        <li>O processo é simples e garante que você continue vendendo sem interrupções.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion-item bg-white rounded-lg shadow-md mb-6 overflow-hidden" data-aos="fade-up">
+                <div class="accordion-header flex justify-between items-center p-6 cursor-pointer">
+                    <h2 class="font-semibold text-white">Política de Devolução</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="transition-transform duration-300 accordion-svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <!-- Nested Accordion 1 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Posso devolver minha maquininha?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        Sim! Você pode solicitar a devolução em até <strong>7 dias corridos</strong> após o
+                                        recebimento ou início do uso do serviço, conforme o Código de Defesa do Consumidor.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 2 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Como faço para devolver?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        Entre em contato com nosso suporte oficial (WhatsApp, e-mail ou telefone) e solicite
+                                        a devolução. Nossa equipe vai te orientar sobre o procedimento de envio.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 3 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Tenho algum custo com a devolução?
+                                </h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Não. Caso a solicitação seja dentro do prazo legal de 7 dias, os custos de frete
+                                        ficam por nossa conta.</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 4 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">E se já usei a máquina?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Não tem problema, desde que esteja em perfeito estado de funcionamento, sem danos, e
+                                        acompanhada de todos os acessórios originais. Se houver avarias ou itens faltando, a
+                                        devolução pode ser recusada</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Nested Accordion 5 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Quando recebo meu reembolso?</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>Após o recebimento e análise do equipamento, o reembolso será processado no mesmo
+                                        meio de pagamento utilizado:</p>
+                                    <ul class="list-disc mt-2 space-y-1">
+                                        <li>Boleto: até <strong>5 dias úteis;</strong></li>
+                                        <li>Cartão de crédito: conforme regras da administradora, podendo aparecer em
+                                            <strong>até duas faturas subsequentes..</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion-item bg-white rounded-lg shadow-md mb-6 overflow-hidden" data-aos="fade-up">
+                <div class="accordion-header flex justify-between items-center p-6 cursor-pointer">
+                    <h2 class="font-semibold text-white">Termos e Políticas</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="transition-transform duration-300 accordion-svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <!-- Nested Accordion 1 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">Política de privacidade e termos</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                       Conversei com o Gustavo ficou de enviar um documento para gerar link e adicionar como documento
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="accordion-item bg-white rounded-lg shadow-md mb-6 overflow-hidden" data-aos="fade-up">
+                <div class="accordion-header flex justify-between items-center p-6 cursor-pointer">
+                    <h2 class="font-semibold text-white">Sobre nós</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="transition-transform duration-300 accordion-svg">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <!-- Nested Accordion 1 -->
+                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
+                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="font-medium">JPI Capital Bank</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="nested-accordion-content">
+                                <div class="p-4 pt-0 text-white">
+                                    <p>
+                                        JPI Capital Bank é uma fintech que oferece soluções financeiras completas para
+                                        autônomos, MEIs e pequenos negócios. Nossa missão é simplificar pagamentos,
+                                        potencializar vendas e apoiar o crescimento dos negócios com segurança, eficiência e
+                                        atendimento confiável.
+                                    </p>
+                                    <p>
+                                        Informações para o suporte
+                                        (17) 99763-1522
+                                        suporte@jpicapitalbank.com.br
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+    </section>
+ 
+
+
+
+
+    <style>
+        .footer-text {
+            padding-left: 6rem;
+        }
+
+        .bi .bi-whatsapp {
+            color: var(--gold)
+        }
+
+
+        @media (max-width: 767.98px) {
+            .footer-text {
+                padding-left: 0rem;
+            }
+        }
+    </style>
+
+    <!-- Footer -->
+    <footer id="ajuda" class="jpi-footer">
+        <div class="container">
+            <div class="row align-items-center footer-wrap">
+                <!-- Col: contatos -->
+                <div class="col-12 col-md-6">
+                    <img src="assets/jpi/logo-jpi-footer.svg" alt="JPI Capital Bank"
+                        class="footer-logo d-md-none d-lg-none" />
+                    <p class="footer-title mb-2">Ajuda ou dúvidas:</p>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="bi bi-whatsapp" aria-hidden="true" style=" color: var(--gold)"></i>
+                            <a href="https://wa.me/5517997631522" target="_blank" rel="noopener">
+                                (17) <strong>99763-1522</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope" aria-hidden="true" style=" color: var(--gold)"></i>
+                            <a href="mailto:suporte@jpicapitalbank.com.br">suporte@jpicapitalbank.com.br</a>
+                        </li>
+                    </ul>
+
+                    <p class="col-12 mt-3 footer-text">
+                        Somos a JPI Capital Bank: uma instituição financeira feita para simplificar, aproximar e
+                        transformar.
+                    </p>
+                </div>
+
+                <!-- Col: logo + redes -->
+                <div class="col-12 col-md-6 footer-logo-wrapper">
+                    <img src="assets/jpi/logo-jpi-footer.svg" alt="JPI Capital Bank"
+                        class="footer-logo d-none d-sm-none d-md-block d-lg-block" />
+                    <div class="social mt-3 ms-0">
+                        <a href="https://www.instagram.com/jpicapitalbank/" aria-label="Instagram"><i
+                                class="bi bi-instagram" style=" color: var(--gold)"></i></a>
+                        <a href="https://www.youtube.com/jpicapitalbank/" aria-label="YouTube"><i class="bi bi-youtube"
+                                style=" color: var(--gold)"></i></a>
+                        <a href="https://www.linkedin.com/jpicapitalbank" aria-label="LinkedIn"><i
+                                class="bi bi-linkedin" style=" color: var(--gold)"></i></a>
+                    </div>
+                    <img src="assets/jpi/selo-verificado.png" alt="Selo Vericado Reclame Aqui" class="mt-3" width="200" />
                 </div>
             </div>
         </div>
-        <!-- </div> -->
     </footer>
 
     <!-- faixa inferior -->
     <div class="footer-bottom">
         <div class="container text-center">
-            <div style="font-size:x-small">© <span id="year"></span> JPI Capital Bank. Todos os direitos reservados.
-                CNPJ • Política de Privacidade • Termos de Uso</div>
+            <div style="font-size:small">© <span id="year"></span> JPI Capital Bank. Todos os direitos reservados.
+                Todos os direitos reservados. © 2025 JPI Capital Bank. CNPJ: 59.458.636/0001-24 - 59458636000124. <br />
+                Rua Roraima, 3719 Quadra 25 Lote 13A Sala 01 - Bairro: Jardim Marim - Votuporanga</div>
         </div>
     </div>
 
@@ -2476,9 +3589,49 @@
 
             // primeira renderização
             calcular();
+
+
+
+            // Script fundamental apenas wordpress
+            const cards = document.querySelectorAll('.card-body');
+            cards[1].classList.add('card-body-modify');
+            const pricesOld = document.querySelectorAll('.old-price');
+            pricesOld[1].classList.add('card-body-old-price-modify');
+            const itensMachine = document.querySelectorAll('.small.text-secondary.ps-3');
+            itensMachine[1].classList.add('card-body-small-modify');
+            const cardPrices = document.querySelectorAll('.card-price');
+            cardPrices[1].classList.add('card-body-price-modify');
+            const imgMachines = document.querySelectorAll('.machine-smart');
+            imgMachines[1].classList.add('machine-card-img-modify');
+            const btnMachines = document.querySelectorAll('.btn.btn-brand.w-100.badge-accent.rounded-pill');
+            btnMachines[1].classList.add('card-body-btn-brand-modify');
+
+
         })();
 
     </script>
+
+    <script>
+        feather.replace();
+
+        // Main accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                accordionItem.classList.toggle('active');
+            });
+        });
+
+        // Nested accordion functionality
+        document.querySelectorAll('.nested-accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                accordionItem.classList.toggle('active');
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>
