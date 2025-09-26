@@ -93,7 +93,7 @@
         }
 
         li {
-            list-style: none;
+            //list-style: none;
         }
 
         .divider {
@@ -2169,6 +2169,14 @@
             transition: max-height 0.3s ease-out;
         }
 
+        .nested-accordion-item ul {
+            padding-left: 30px;
+        }
+
+        .nested-accordion-item ol {
+            padding-left: 30px;
+        }
+
         .accordion-content-inner {
             padding: 0 1.5rem 1.5rem;
         }
@@ -2223,6 +2231,18 @@
             color: var(--gold);
         }
 
+        @media (max-width: 767.98px){
+            .nested-accordion-item ul {
+            padding-left: 15px;
+        }
+
+        .nested-accordion-item ol {
+            padding-left: 15px;
+        }
+
+        }
+   
+
         
 
     </style>
@@ -2263,7 +2283,7 @@
                                     <p class="mb-4">Para começar a vender com a JPI Capital Bank, siga o processo:</p>
                                     <ol class="list-decimal space-y-2">
                                         <li><strong>Escolha seu equipamento:</strong>
-                                            <ul class="list-disc mt-2 space-y-1">
+                                            <ul class="list-disc mt-2">
                                                 <li><strong>JPI MPOS</strong> – opção compacta para quem precisa de
                                                     mobilidade e baixo custo.</li>
                                                 <li><strong>JPI POS</strong> – ideal para negócios que buscam robustez e
@@ -2273,7 +2293,7 @@
                                             </ul>
                                         </li>
                                         <li><strong>Selecione seu plano de recebimento:</strong>
-                                            <ul class="list-disc mt-2 space-y-1">
+                                            <ul class="list-disc mt-2">
                                                 <li><strong>Plano Antecipado (D+1)</strong> – todas as vendas recebidas em 1
                                                     dia útil, já com taxa antecipada.</li>
                                                 <li><strong>Plano Parcelado</strong> – recebimento conforme as parcelas do
@@ -2321,7 +2341,7 @@
                             <div class="nested-accordion-content">
                                 <div class="p-4 pt-0 text-white">
                                     <p>Depende do plano escolhido:</p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li><strong>Plano Diário:</strong>todas as vendas (débito e crédito) são liquidadas
                                             em 1 dia útil na sua conta JPI.</li>
                                         <li><strong>Plano Econômico:</strong> o lojista recebe de acordo com a quantidade de
@@ -2344,7 +2364,7 @@
                             <div class="nested-accordion-content">
                                 <div class="p-4 pt-0 text-white">
                                     <p>Sim, mas com regras claras:</p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>As taxas <strong>não mudam a todo momento.</strong></li>
                                         <li>A atualização só ocorre em função de cenários macroeconômicos, geralmente
                                             baseados na <strong>taxa Selic</strong>.
@@ -2391,7 +2411,7 @@
                                     <p>Após a aprovação da sua conta digital e confirmação do cadastro, o prazo de entrega
                                         é:
                                     </p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li><strong>Sudeste, Sul e Centro-Oeste:</strong> de 2 a 15 dias úteis.</li>
                                         <li><strong>Nordeste e Norte:</strong> de 5 a 20 dias úteis.</li>
                                     </ul>
@@ -2477,7 +2497,7 @@
                                     <p>
                                         Sim. Além das vendas presenciais, você pode vender online:
                                     </p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>Pelo <strong>app JPI Capital Bank (via Paytime);</strong></li>
                                         <li>Pelo <strong>app PagBank</strong>, integrado ao plano escolhido.</li>
                                     </ul>
@@ -2540,7 +2560,7 @@
                                 <div class="p-4 pt-0 text-white">
                                     <p><strong>Sim.</strong> Clientes com CNPJ do segmento de alimentação podem habilitar:
                                     </p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>Alelo</li>
                                         <li>Sodexo</li>
                                         <li>Ticket</li>
@@ -2565,7 +2585,7 @@
                             <div class="nested-accordion-content">
                                 <div class="p-4 pt-0 text-white">
                                     <p>Nossas maquininhas já vêm habilitadas para receber os principais cartões:</p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li><strong>Crédito e débito:</strong> Mastercard, Visa, Elo, Cabal e Mais!</li>
                                         <li><strong>Crédito:</strong> Hipercard, Hiper.</li>
                                         <li><strong>Débito:</strong> Banricompras, Débito Mastercard.</li>
@@ -2591,7 +2611,7 @@
                             <div class="nested-accordion-content">
                                 <div class="p-4 pt-0 text-white">
                                     <p>Se a transação for negada, recomendamos verificar:</p>
-                                    <ol class="list-disc mt-2 space-y-1">
+                                    <ol class="list-disc mt-2">
                                         <li><strong>Saldo disponível</strong> no cartão do cliente.</li>
                                         <li><strong>Bandeira:</strong> se é aceita na JPI Capital Bank.</li>
                                         <li><strong>Conexão da maquininha</strong> (chip ou Wi-Fi).</li>
@@ -2708,39 +2728,7 @@
                                         A conta digital JPI já vem habilitada para Pix.
                                     </p>
     
-                                    <ul class="list-disc mt-2 space-y-1">
-                                        <li>Você pode <strong>receber via Pix QR Code dinâmico</strong> gerado pelo app.
-                                        </li>
-                                        <li>Pode também copiar e compartilhar o <strong>Pix Copia e Cola.</strong></li>
-                                        <li>O recebimento é imediato, direto na sua conta digital JPI.</li>
-                                        <li>Criar chave pix para realizar as funcionalidades acima.</li>
-                                    </ul>
-    
-                                    <p>
-                                        <strong>Diferencial:</strong> com o Pix integrado, seu cliente tem mais opções de
-                                        pagamento e você liquida de forma instantânea.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- Nested Accordion 9 -->
-                        <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
-                            <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
-                                <h3 class="font-medium">Como funciona a habilitação do Pix QR Code?</h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                            <div class="nested-accordion-content">
-                                <div class="p-4 pt-0 text-white">
-                                    <p>
-                                        A conta digital JPI já vem habilitada para Pix.
-                                    </p>
-    
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>Você pode <strong>receber via Pix QR Code dinâmico</strong> gerado pelo app.
                                         </li>
                                         <li>Pode também copiar e compartilhar o <strong>Pix Copia e Cola.</strong></li>
@@ -2785,7 +2773,7 @@
                                 <div class="p-4 pt-0 text-white">
                                     <p>Após a aprovação da sua conta, o envio da maquininha é realizado conforme a região:
                                     </p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li><strong>Sudeste, Sul e Centro-Oeste:</strong> 2 a 15 dias úteis.</li>
                                         <li><strong>Nordeste e Norte:</strong> 5 a 20 dias úteis.</li>
                                     </ul>
@@ -2810,7 +2798,7 @@
                                     <p>Assim que sua maquininha for despachada, a JPI Capital Bank enviará o código de
                                         rastreio diretamente pelo WhatsApp cadastrado.
                                     </p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>Você poderá acompanhar em tempo real o andamento da entrega.
                                         </li>
                                         <li>Caso tenha dúvidas sobre o status, entre em contato com o <strong>suporte via
@@ -2835,7 +2823,7 @@
                                 <div class="p-4 pt-0 text-white">
                                     <p>Em algumas regiões, a logística é realizada diretamente pela PagBank, nossa parceira
                                         de operação.</p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>O cliente receberá normalmente a maquininha vinculada à JPI Capital Bank.</li>
                                         <li>Isso não altera em nada o funcionamento do seu plano, taxas ou suporte.</strong>
                                         </li>
@@ -2857,7 +2845,7 @@
                             <div class="nested-accordion-content">
                                 <div class="p-4 pt-0 text-white">
                                     <p>Em caso de atraso além do prazo estimado:</p>
-                                    <ol class="list-disc mt-2 space-y-1">
+                                    <ol class="list-disc mt-2">
                                         <li>Verifique o status do rastreio enviado.
                                         </li>
                                         <li>Entre em contato com o nosso suporte para que possamos abrir uma ocorrência
@@ -2899,7 +2887,7 @@
                                         Nosso compromisso é com a sua satisfação! Por isso, garantimos:
                                     </p>
     
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>Maquininhas em perfeito estado de funcionamento;</li>
                                         <li>Suporte técnico direto da JPI;</li>
                                         <li>Troca ou manutenção do equipamento quando necessário.</li>
@@ -2938,7 +2926,7 @@
                                     <p>Caso precise de bobinas extras para sua JPI POS ou JPI Smart POS, entre em contato
                                         com nosso <strong>suporte via WhatsApp ou chamado no Portal JPI.</strong>
                                     </p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>Recomendamos solicitar com antecedência para não interromper suas vendas.</li>
                                         <li>Armazene as bobinas em local seco e arejado para evitar danos.</li>
                                     </ul>
@@ -2961,7 +2949,7 @@
                                 <div class="p-4 pt-0 text-white">
                                     <p>Se o chip apresentar falhas de conexão:
                                     </p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>Confira se há cobertura de sinal na sua região.</li>
                                         <li>Reinicie a maquininha e aguarde alguns segundos.</li>
                                         <li>Se necessário, alterne para conexão Wi-Fi.</li>
@@ -2987,7 +2975,7 @@
                             </div>
                             <div class="nested-accordion-content">
                                 <div class="p-4 pt-0 text-white">
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>
                                             Registre um <strong>boletim de ocorrência</strong> imediatamente.</li>
                                         <li>
@@ -3017,7 +3005,7 @@
                                 <div class="p-4 pt-0 text-white">
                                     <p>A JPI Capital Bank oferece <strong>suporte técnico, manutenção e troca de
                                             equipamentos</strong> em caso de defeito ou necessidade de reparo.</p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>O lojista deve acionar o <strong>suporte via WhatsApp ou pelo Portal
                                                 JPI.</strong></li>
                                         <li>Nossa equipe avaliará o problema e, se confirmado defeito, será providenciada a
@@ -3137,7 +3125,7 @@
                                 <div class="p-4 pt-0 text-white">
                                     <p>Após o recebimento e análise do equipamento, o reembolso será processado no mesmo
                                         meio de pagamento utilizado:</p>
-                                    <ul class="list-disc mt-2 space-y-1">
+                                    <ul class="list-disc mt-2">
                                         <li>Boleto: até <strong>5 dias úteis;</strong></li>
                                         <li>Cartão de crédito: conforme regras da administradora, podendo aparecer em
                                             <strong>até duas faturas subsequentes..</strong></li>
@@ -3165,7 +3153,7 @@
                         <!-- Nested Accordion 1 -->
                         <div class="nested-accordion-item bg-gray-50 rounded-lg mb-4 overflow-hidden">
                             <div class="nested-accordion-header flex justify-between items-center p-4 cursor-pointer">
-                                <h3 class="font-medium">Política de privacidade e termos</h3>
+                                <h3 class="font-medium">Política de Privacidade e Demais Termos</h3>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="transition-transform duration-300 accordion-svg">
@@ -3174,9 +3162,21 @@
                             </div>
                             <div class="nested-accordion-content">
                                 <div class="p-4 pt-0 text-white">
-                                    <p>
-                                       Conversei com o Gustavo ficou de enviar um documento para gerar link e adicionar como documento
-                                    </p>
+                                    <a href="https://jpicapitalbank.com.br/wp-content/uploads/2025/09/politica-de-privacidade.pdf" target="_blank">
+                                       Política de Privacidade
+                                    </a><br/><br/>
+
+                                    <a href="https://jpicapitalbank.com.br/wp-content/uploads/2025/09/trocas-devolucoes-reembolsos.pdf" target="_blank">
+                                        Política de Trocas, Devoluções e Reembolsos
+                                    </a><br/><br/>
+
+                                    <a href="https://jpicapitalbank.com.br/wp-content/uploads/2025/09/regulamento-dos-planos.pdf" target="_blank">
+                                        Regulamento dos Planos
+                                    </a><br/><br/>
+
+                                    <a href="https://jpicapitalbank.com.br/wp-content/uploads/2025/09/credeciamento.pdf" target="_blank">
+                                        Contrato de credenciamento ao Sistema JPI Capital Bank e Prestações de Serviços de Tecnologias
+                                    </a><br/><br/>
                                 </div>
                             </div>
                         </div>
@@ -3214,9 +3214,9 @@
                                         atendimento confiável.
                                     </p>
                                     <p>
-                                        Informações para o suporte
-                                        (17) 99763-1522
-                                        suporte@jpicapitalbank.com.br
+                                        <br/>Informações para o suporte<br/>
+                                        (17) 99763-1522<br/>
+                                        suporte@jpicapitalbank.com.br<br/>
                                     </p>
                                 </div>
                             </div>
@@ -3258,7 +3258,7 @@
                 <div class="col-12 col-md-6">
                     <img src="assets/jpi/logo-jpi-footer.svg" alt="JPI Capital Bank"
                         class="footer-logo d-md-none d-lg-none" />
-                    <p class="footer-title mb-2">Ajuda ou dúvidas:</p>
+                    <p class="footer-title mb-2 mt-4">Ajuda ou dúvidas:</p>
                     <ul class="contact-list">
                         <li>
                             <i class="bi bi-whatsapp" aria-hidden="true" style=" color: var(--gold)"></i>
@@ -3285,7 +3285,7 @@
                     <div class="social mt-3 ms-0">
                         <a href="https://www.instagram.com/jpicapitalbank/" aria-label="Instagram"><i
                                 class="bi bi-instagram" style=" color: var(--gold)"></i></a>
-                        <a href="https://www.youtube.com/jpicapitalbank/" aria-label="YouTube"><i class="bi bi-youtube"
+                        <a href="https://www.youtube.com/@jpicapitalbank" aria-label="YouTube"><i class="bi bi-youtube"
                                 style=" color: var(--gold)"></i></a>
                         <a href="https://www.linkedin.com/jpicapitalbank" aria-label="LinkedIn"><i
                                 class="bi bi-linkedin" style=" color: var(--gold)"></i></a>
@@ -3299,7 +3299,7 @@
     <!-- faixa inferior -->
     <div class="footer-bottom">
         <div class="container text-center">
-            <div style="font-size:small">© <span id="year"></span> JPI Capital Bank. Todos os direitos reservados.
+            <div style="font-size:small; padding-left: 20px; padding-right: 20px;">© <span id="year"></span> JPI Capital Bank. Todos os direitos reservados.
                 Todos os direitos reservados. © 2025 JPI Capital Bank. CNPJ: 59.458.636/0001-24 - 59458636000124. <br />
                 Rua Roraima, 3719 Quadra 25 Lote 13A Sala 01 - Bairro: Jardim Marim - Votuporanga</div>
         </div>
