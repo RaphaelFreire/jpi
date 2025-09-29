@@ -910,6 +910,14 @@
             font-size: 1.5rem;
         }
 
+        .footer-text {
+            padding-left: 6rem;
+        }
+
+        .bi .bi-whatsapp {
+            color: var(--gold)
+        }
+
         /* =========================================================
    Componentes misc
    ========================================================= */
@@ -920,6 +928,135 @@
         .plan-pop {
             border: 2px solid var(--brand);
         }
+
+
+
+  /* =========================================================
+FAQ
+  ========================================================= */
+
+.accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .nested-accordion-item ul {
+            padding-left: 30px;
+        }
+
+        .nested-accordion-item ol {
+            padding-left: 30px;
+        }
+
+        .accordion-content-inner {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 2000px;
+        }
+
+        .accordion-item.active .accordion-header svg {
+            transform: rotate(180deg);
+        }
+
+        .nested-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .nested-accordion-item.active .nested-accordion-content {
+            max-height: 2000px;
+        }
+
+        .nested-accordion-item.active .nested-accordion-header svg {
+            transform: rotate(180deg);
+        }
+
+        .wrap-accordion{
+            background-color: var(--brand);
+        }
+
+        .accordion-title{
+            color: var(--gold);
+        }
+
+        .accordion-item{
+            background-color: var(--brand-dark) !important;
+        }
+
+        .nested-accordion-item{
+            background-color: var(--brand); 
+        }
+
+        .accordion-header > svg {
+            color: var(--gold);
+        }
+
+        .nested-accordion-header h3 {
+            color: var(--gold);
+        }
+        
+        .accordion-svg{
+            color: var(--gold);
+        }
+
+        @media (max-width: 767.98px){
+            .nested-accordion-item ul {
+            padding-left: 15px;
+        }
+
+        .nested-accordion-item ol {
+            padding-left: 15px;
+        }
+
+        }
+
+
+
+
+ /* =========================================================
+   Widget WhatsApp
+   ========================================================= */
+   
+   .whatsapp-widget > i {
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+
+   .bi-whatsapp::before {
+   font-size: 25px;
+   }
+
+   .whatsapp-widget {
+        transition: all 0.3s ease;
+      }
+      .whatsapp-widget:hover {
+        transform: scale(1.1);
+      }
+      .pulse-animation {
+        animation: pulse 5s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(200, 200, 200, 0.805);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(190, 192, 192, 0);
+        }
+      }
+
+
+
+
 
         /* =========================================================
    Responsivo
@@ -965,6 +1102,10 @@
 
             .app-kicker h3 {
                 font-size: 1rem;
+            }
+
+            .footer-text {
+                padding-left: 0rem;
             }
         }
 
@@ -1926,14 +2067,14 @@
                         class="img-fluid img-main mb-3">
 
                     <!-- Botões das lojas -->
-                    <div class="badges-group gap-3 mb-3">
-                        <a class="store-badge" href="https://play.google.com/store/apps/details?id=SEU_APP_ID"
+                    <div class="badges-group gap-3">
+                        <a class="store-badge" href="https://play.google.com/store/apps/details?id=app.jpicapitalbank.jpce9r50"
                             target="_blank" rel="noopener" aria-label="Abrir na Google Play">
                             <img src="assets/jpi/google-play-badge.svg" alt="Disponível no Google Play" width="170"
                                 height="50">
                         </a>
 
-                        <a class="store-badge" href="https://apps.apple.com/app/idSEU_APP_ID" target="_blank"
+                        <a class="store-badge" href="https://apps.apple.com/br/app/jpi-capital-bank/id6746871395" target="_blank"
                             rel="noopener" aria-label="Abrir na App Store">
                             <img src="assets/jpi/app-store-badge.svg" alt="Baixar na App Store" width="170" height="50">
                         </a>
@@ -2160,94 +2301,7 @@
     </div>
 
 
-    <!--FAQ-->
-
-    <style>
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
-        .nested-accordion-item ul {
-            padding-left: 30px;
-        }
-
-        .nested-accordion-item ol {
-            padding-left: 30px;
-        }
-
-        .accordion-content-inner {
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        .accordion-item.active .accordion-content {
-            max-height: 2000px;
-        }
-
-        .accordion-item.active .accordion-header svg {
-            transform: rotate(180deg);
-        }
-
-        .nested-accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
-        .nested-accordion-item.active .nested-accordion-content {
-            max-height: 2000px;
-        }
-
-        .nested-accordion-item.active .nested-accordion-header svg {
-            transform: rotate(180deg);
-        }
-
-        .wrap-accordion{
-            background-color: var(--brand);
-        }
-
-        .accordion-title{
-            color: var(--gold);
-        }
-
-        .accordion-item{
-            background-color: var(--brand-dark) !important;
-        }
-
-        .nested-accordion-item{
-            background-color: var(--brand); 
-        }
-
-        .accordion-header > svg {
-            color: var(--gold);
-        }
-
-        .nested-accordion-header h3 {
-            color: var(--gold);
-        }
-        
-        .accordion-svg{
-            color: var(--gold);
-        }
-
-        @media (max-width: 767.98px){
-            .nested-accordion-item ul {
-            padding-left: 15px;
-        }
-
-        .nested-accordion-item ol {
-            padding-left: 15px;
-        }
-
-        }
-   
-
-        
-
-    </style>
-
-
+   <!-- FAQ -->
     <section class="wrap-accordion">
         <div class="container mx-auto px-4 py-12">
             <div class="text-center mb-12">
@@ -3170,7 +3224,7 @@
                                         Política de Trocas, Devoluções e Reembolsos
                                     </a><br/><br/>
 
-                                    <a href="https://jpicapitalbank.com.br/wp-content/uploads/2025/09/regulamento-dos-planos.pdf" target="_blank">
+                                    <a href="https://jpicapitalbank.com.br/wp-content/uploads/2025/09/regulamentos-planos.pdf" target="_blank">
                                         Regulamento dos Planos
                                     </a><br/><br/>
 
@@ -3231,25 +3285,6 @@
  
 
 
-
-
-    <style>
-        .footer-text {
-            padding-left: 6rem;
-        }
-
-        .bi .bi-whatsapp {
-            color: var(--gold)
-        }
-
-
-        @media (max-width: 767.98px) {
-            .footer-text {
-                padding-left: 0rem;
-            }
-        }
-    </style>
-
     <!-- Footer -->
     <footer id="ajuda" class="jpi-footer">
         <div class="container">
@@ -3304,6 +3339,22 @@
                 Rua Roraima, 3719 Quadra 25 Lote 13A Sala 01 - Bairro: Jardim Marim - Votuporanga</div>
         </div>
     </div>
+
+     <!-- WhatsApp Widget -->
+     <div class="fixed bottom-6 right-6 z-50">
+        <a
+          href="https://wa.me/5517997631522"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="whatsapp-widget bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center pulse-animation"
+          aria-label="Contato via WhatsApp"
+        >
+          <i class="bi bi-whatsapp"></i>
+        </a>
+      </div>
+  
+
+
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -3628,6 +3679,15 @@
                 const accordionItem = header.parentElement;
                 accordionItem.classList.toggle('active');
             });
+        });
+    </script>
+
+    <script>
+        // WhatsApp Widget 
+      document
+        .querySelector(".whatsapp-widget")
+        .addEventListener("click", function () {
+          this.classList.remove("pulse-animation");
         });
     </script>
 
